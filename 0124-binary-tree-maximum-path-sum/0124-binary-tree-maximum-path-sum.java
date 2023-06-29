@@ -28,9 +28,9 @@ class Solution {
 
         int lh = Math.max(0, maxPathDown(root.left));
         int rh = Math.max(0, maxPathDown(root.right));
-
+// Update the max path sum if the path passing through the current node has a greater sum
         maxValue = Math.max(maxValue, root.val + lh + rh);
-
+// Return the maximum path sum down to the current node
         return root.val + Math.max(lh, rh);
     }
 }
