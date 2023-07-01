@@ -7,7 +7,9 @@ class Solution
         int ans=-1;
         
          int low=0;
-         int high= (int)Math.pow(10,9); 
+        int high=0;
+        for(int bloom:bloomDay)
+          high= Math.max(high,bloom);
         
         while (low<=high)
         {
