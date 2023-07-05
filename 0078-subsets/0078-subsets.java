@@ -6,19 +6,22 @@ class Solution {
         return res;
     }
     
-    static void subsequence(int i,int[] arr, List<Integer> lst, List<List<Integer>> res){
-        if(res.contains(lst)) 
-            return;
-        if(i==arr.length)
+   void subsequence(int ind , int[] nums , List<Integer> subset, List<List<Integer>> result){
+       
+        if(ind >= nums.length )
         {
-            res.add(new ArrayList<>(lst));
-            return;
+        result.add(new ArrayList<>(subset));
+        return;
         }
-        
-        lst.add(arr[i]);
-        subsequence(i+1, arr, lst, res);
-        lst.remove(lst.size()-1);
-        subsequence(i+1, arr, lst, res);
+
+        //for the current element 
+        subset.add(nums[ind]);
+        subsequence(ind +1, nums , subset ,result);
+
+        //exclude the current element
+        subset.remove(subset.size() - 1 );
+        subsequence(ind +1 , nums,subset , result);
+
     }
 }
    
