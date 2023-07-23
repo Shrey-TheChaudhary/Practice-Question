@@ -111,8 +111,6 @@ class GfG {
 // } Driver Code Ends
 
 
-
-
 //User function Template for Java
 
 
@@ -128,7 +126,6 @@ class Node
          left = right = null;
     }
 }*/
-
 
 class Solution{
     //Function to return list containing elements of right view of binary tree.
@@ -157,3 +154,4 @@ class Solution{
       return ans;
     }
 }
+
