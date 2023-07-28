@@ -1,6 +1,6 @@
 # Lowest Common Ancestor in a BST
 ## Easy
-<div class="problems_problem_content__Xm_eO"><p><span style="font-size: 18px;">Given a Binary Search Tree (with all values unique)&nbsp;and two node values. Find the Lowest Common Ancestors of the two nodes in the BST.</span></p>
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size: 18px;">Given a Binary Search Tree (with all values unique) and two node values n1 and n2 (n1!=n2). Find the Lowest Common Ancestors of the two nodes in the BST.</span></p>
 <p><span style="font-size: 18px;"><strong>Example 1:</strong></span></p>
 <pre><span style="font-size: 18px;"><strong>Input:
 </strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 5
