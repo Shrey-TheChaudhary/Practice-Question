@@ -13,11 +13,11 @@ class Solution {
        if(st.isEmpty())
           return "";
        
-       String ans="";
+       StringBuilder ans=new StringBuilder();
        for(char ch:st){
-          ans+=ch;
+           ans.append(ch);
        }
-        return ans;
+        return ans.toString();
 
 
     }
