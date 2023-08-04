@@ -40,19 +40,19 @@ class GFG
 }
 // } Driver Code Ends
 
+
 //User function Template for Java
 
 class Solution
 { 
     static void reverse(Stack<Integer> s)
     {
-       Queue<Integer> ans=new LinkedList<>();
+     Queue<Integer> ans=new LinkedList<>();
           while (!s.isEmpty())
              ans.add(s.pop());
              
         while(!ans.isEmpty())
         s.push(ans.remove());
-        
         
     }
 }
