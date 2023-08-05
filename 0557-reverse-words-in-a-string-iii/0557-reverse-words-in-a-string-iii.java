@@ -1,17 +1,15 @@
-import java.util.*;
 class Solution {
     public String reverseWords(String s) {
-         String res="";
-         StringTokenizer st = new StringTokenizer(s);
-       while (st.hasMoreTokens())
-       {String ans="";
-           String str=st.nextToken();
-           for(int i=0;i<str.length();i++)
-           {
-               ans=str.charAt(i)+ans;
-           }
-           res+=ans+" ";
+        String [] newString = s.split(" ");
+       StringBuilder sb1 = new StringBuilder();
+        
+       for(String s1 : newString)
+       {
+           StringBuilder sb = new StringBuilder(s1);
+           sb.reverse();
+           sb1.append(" ").append(sb);
        }
-     return res.trim();
+
+return  sb1.toString().substring(1);
     }
 }
