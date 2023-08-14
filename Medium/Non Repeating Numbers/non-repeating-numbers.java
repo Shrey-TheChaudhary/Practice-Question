@@ -33,8 +33,8 @@ class GFG
 // } Driver Code Ends
 
 
-
 //User function Template for Java
+
 
 class Solution
 {
@@ -47,7 +47,6 @@ class Solution
        
        int res1=0,res2=0;
        int set=xor&~(xor-1);
-       
        for(int i=0;i<n;i++)
        {
            if((nums[i]&set)!=0)
@@ -58,6 +57,7 @@ class Solution
           if(res1 < res2) 
             nums = new int[]{res1, res2};
            
+        
         else 
             nums = new int[]{res2, res1};
             
