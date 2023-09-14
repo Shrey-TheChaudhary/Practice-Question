@@ -29,7 +29,7 @@ class Solution{
 
 	public int perfectSum(int arr[],int n, int sum) 
 	{ 
-	     int MOD = 1000000007;
+	    int MOD = 1000000007;
         int[] dp = new int[sum + 1];
         Arrays.fill(dp, 0);
         dp[0] = 1;
