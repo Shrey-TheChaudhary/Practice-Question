@@ -31,7 +31,7 @@ class GFG{
 // User function Template for Java
 
 class Solution{
-     static int equalPartition(int n, int arr[])
+    static int equalPartition(int n, int arr[])
     {int ans=0;
         int totalsum=0;
         for(int i:arr)
