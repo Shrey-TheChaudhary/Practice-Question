@@ -31,26 +31,43 @@ class GFG{
 // User function Template for Java
 
 class Solution{
-      static int solve(int n, int[] arr, int i, int sum, int currsum) {
-        if (i >= n) return 0;
-        if (currsum == (sum / 2)) return 1;
-        if (currsum > (sum / 2)) return 0;
-        currsum += arr[i];
-        int take = solve(n, arr, i + 1, sum, currsum);
-        currsum -= arr[i];
-        if (take == 1) return 1;
-        int nottake = solve(n, arr, i + 1, sum, currsum);
-
-        return take | nottake;
-    }
-
-    static int equalPartition(int n, int[] arr) {
-        int sum = 0;
-        for (int i = 0; i < n; i++) sum += arr[i];
-        int currsum = 0;
-
-        if (sum % 2 != 0) return 0;
-        else return solve(n, arr, 0, sum, currsum);
+     static int equalPartition(int n, int arr[])
+    {int ans=0;
+        int totalsum=0;
+        for(int i:arr)
+        totalsum+=i;
+        
+        if(totalsum%2==1)
+        return ans;
+        else
+        {
+             int k = totalsum/2;
+            boolean dp[][]=new boolean[n][k+1];
+        for(int i=0;i<n;i++)
+        dp[i][0]=true;
+        
+        if(arr[0]<=k)
+        dp[0][arr[0]]=true;
+        
+        for(int ind=1;ind<n;ind++)
+        {
+            for(int target=1;target<=k;target++)
+            {
+                boolean nottake=dp[ind-1][target];
+                boolean take=false;
+                
+                if(arr[ind]<=target)
+                take=dp[ind-1][target-arr[ind]];
+                
+                dp[ind][target]=take||nottake;
+            }
+        }
+        
+        if(dp[n-1][k]==false)
+        ans= 0;
+        else
+        ans= 1;
+        }
+        return ans;
     }
 }
-
