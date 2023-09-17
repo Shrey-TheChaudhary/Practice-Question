@@ -37,7 +37,7 @@ class Solution{
     // Function to check if given number n is a power of two.
     public static boolean isPowerofTwo(long n){
         
-       boolean power = true;
+        boolean power = true;
         if(n <= 0)
             power = false;
             
