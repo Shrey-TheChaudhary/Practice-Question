@@ -30,7 +30,6 @@ class Driver_class
 // } Driver Code Ends
 
 
-
 //User function Template for Java
 
 class Solution{
@@ -38,9 +37,18 @@ class Solution{
     // Function to check if given number n is a power of two.
     public static boolean isPowerofTwo(long n){
         
-       if(n==0)
-       return false;
-       return ((n&(n-1))==0);
+       boolean power = true;
+        if(n <= 0)
+            power = false;
+            
+        while (n > 1) {
+        if (n % 2 != 0) {
+            power = false; 
+        }
+        n /= 2; 
+    }
+    
+   return power;
         
     }
     
