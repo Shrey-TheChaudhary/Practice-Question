@@ -11,27 +11,29 @@ import java.io.*;
 
 class GFG {
     public static void main(String[] args) throws IOException {
-        Scanner sc = new Scanner(System.in);
-        int T = sc.nextInt();
+        BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
+        PrintWriter out=new PrintWriter(System.out);
+        int T = Integer.parseInt(in.readLine());
         while (T-- > 0) {
-            int n = sc.nextInt();
-            int m = sc.nextInt();
-            int[][] grid = new int[n][m];
-
+            String s[] = in.readLine().trim().split(" ");
+            int n = Integer.parseInt(s[0]);
+            int m = Integer.parseInt(s[1]);
+            int a[][] = new int[n][m];
             for (int i = 0; i < n; i++) {
-
+                s = in.readLine().trim().split(" ");
                 for (int j = 0; j < m; j++) {
-                    grid[i][j] = sc.nextInt();
+                    a[i][j] = Integer.parseInt(s[j]);
                 }
             }
-
             Solution ob = new Solution();
-            int ans = ob.numberOfEnclaves(grid);
-            System.out.println(ans);
+            out.println(ob.numberOfEnclaves(a));
         }
+        out.close();
     }
 }
 // } Driver Code Ends
+
+
 
 
 // User function Template for Java
