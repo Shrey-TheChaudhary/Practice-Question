@@ -35,6 +35,7 @@ class GFG {
 
 
 // User function Template for Java
+
 class Pair {
     int first;
     int second; 
