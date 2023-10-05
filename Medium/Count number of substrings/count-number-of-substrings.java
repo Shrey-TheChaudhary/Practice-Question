@@ -27,7 +27,7 @@ class GfG
 
 class Solution
 {
-      static long calcCount(String s , int k ){
+       static long calcCount(String s , int k ){
         
         //Using Sliding Window Approach 
         int i = 0;
