@@ -92,7 +92,7 @@ class Solution {
     // It should returns head of the modified list
     public Node pairwiseSwap(Node head)
     {
-          if (head == null || head.next == null) {
+         if (head == null || head.next == null) {
             return head;
         }
         
