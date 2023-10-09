@@ -103,7 +103,6 @@ class GFG {
 // } Driver Code Ends
 
 
-
 //User function Template for Java
 
 /* 
@@ -124,9 +123,20 @@ class Solution {
     //Function to find the height of a binary tree.
     int height(Node node) 
     {
-        if(node ==null)
-        return 0;
-        
-        return Math.max(height(node.left),height(node.right))+1;
+         if(node==null){
+           return 0;
+       }
+       
+       // left hight calculation 
+       int Lhight=height(node.left);
+       
+       //right hight calculation 
+       int Rhight=height(node.right);
+       
+       //max hight between left and right 
+       int Hight=Math.max(Lhight,Rhight);
+       
+       return Hight+1;  // include root hight as Hight+1.
     }
 }
+
