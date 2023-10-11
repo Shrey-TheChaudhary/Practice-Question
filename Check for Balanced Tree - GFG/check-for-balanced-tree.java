@@ -147,4 +147,3 @@ class Tree {
       return (true && isBalanced(root.left) && isBalanced(root.right));
   }
 }
-
