@@ -102,8 +102,6 @@ class GFG {
 // } Driver Code Ends
 
 
-
-
 //User function Template for Java
 
 /* A Binary Tree node
@@ -119,8 +117,7 @@ class Node
         left = right = null;
     }
 }
- */ 
-
+ */
 class Solution {
      boolean duplicate = false;
     int dupSub(Node root) {
