@@ -61,21 +61,20 @@ class GFG {
 // User function Template for Java
 
 class Solution {
-    static int ans = -1;
-    public static int floor(Node root, int x) {
-        ans = -1;
+   public static int floor(Node root, int key) {
+        // Code here
+        if(root==null) return -1;
+        if(root.data<=key&&root.right==null) return root.data;
+        int val=-1;
+        while(root!=null){
+            if(root.data==key){
+                val=root.data;
+                break;}
+            else 
+              if(root.data<key) {val=root.data;root=root.right;}
+              else root=root.left;
+        }
+        return val;
         
-        helper(root, x);
-        
-        return ans;
-    }
-    
-    public static void helper(Node node, int target) {
-        if(node == null) return;
-        
-        if(node.data <= target) ans = Math.max(ans, node.data);
-
-        helper(node.left, target);
-        helper(node.right, target);
     }
 }
