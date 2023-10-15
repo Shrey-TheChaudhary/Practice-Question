@@ -161,7 +161,7 @@ class BinarySearchTree
 
 class GfG
 {
-    Node buildBalancedTree(Node root) 
+   Node buildBalancedTree(Node root) 
     {
         //Add your code here.
         ArrayList<Integer> list = new ArrayList<>();
