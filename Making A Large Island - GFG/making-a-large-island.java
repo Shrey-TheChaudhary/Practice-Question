@@ -65,7 +65,6 @@ class GFG {
 
 // } Driver Code Ends
 
-
 class Solution{
     private int[] parent;
     private int[] size;
