@@ -31,6 +31,7 @@ class GFG{
 
 
 //User function Template for Java
+
 class Solution{
     static class Graph{
        public int v;
