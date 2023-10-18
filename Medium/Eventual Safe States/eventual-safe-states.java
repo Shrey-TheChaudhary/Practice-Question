@@ -45,7 +45,7 @@ class Solution {
 
     List<Integer> eventualSafeNodes(int V, List<List<Integer>> adj) {
 
-         List<List<Integer>> adjRev = new ArrayList<>();
+        List<List<Integer>> adjRev = new ArrayList<>();
         for (int i = 0; i < V; i++) {
             adjRev.add(new ArrayList<>());
         }
