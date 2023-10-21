@@ -25,7 +25,7 @@ class GFG
 //User function Template for Java
 class Solution{
     static long sumOfDivisors(int N){
-          long sum = 0;
+         long sum = 0;
         for(int i = 1; i <= N; i++){
             if(N == 0)
              return 0;
