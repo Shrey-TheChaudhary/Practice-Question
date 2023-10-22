@@ -10,10 +10,10 @@ class GfG {
 		int t = Integer.parseInt(br.readLine().trim());
 		while(t-->0){
 		    String inputLine[] = br.readLine().trim().split(" ");
-		    int m = Integer.parseInt(inputLine[0]);
-		    int n = Integer.parseInt(inputLine[1]);
+		    int M = Integer.parseInt(inputLine[0]);
+		    int N = Integer.parseInt(inputLine[1]);
 		    Solution ob = new Solution();
-		    System.out.println(ob.numberOfPaths(m, n));
+		    System.out.println(ob.numberOfPaths(M, N));
 		}
 	}
 }
@@ -25,34 +25,41 @@ class GfG {
 
 
 class Solution{
-    
-    long numberOfPaths(int m, int n) {
-       long dp[][]=new long [m][n];
-        for(long row[]:dp)
-            Arrays.fill(row,-1);
-        
-        return countway(m,n,dp);
+    private static final int MOD = 1000000007;
+    private static long modInverse(long base) {
+        return power(base, MOD - 2);
     }
-        long countway(int m,int n,long dp[][])
-        {
-        for(int i=0;i<m;i++)
-        {
-            for(int j=0;j<n;j++)
-            {
-            if(i==0 && j==0)
-            {
-                dp[i][j]=1;
-                continue;
+    private static long power(long base, int exponent) {
+        long result = 1;
+        while (exponent > 0) {
+            if (exponent % 2 == 1) {
+                result = (result * base) % MOD;
             }
-                long up=0,left=0;
-                if(i>0)
-                    up=dp[i-1][j];
-                if(j>0)
-                    left=dp[i][j-1];
-                
-                dp[i][j]=up+left;
-            }
+            base = (base * base) % MOD;
+            exponent /= 2;
         }
-        return dp[m-1][n-1];
+        return result;
     }
+    private static int nCk(int n, int k) {
+        long numerator = 1;
+        long denominator = 1;
+
+        for (int i = 0; i < k; i++) {
+            numerator = (numerator * (n - i)) % MOD;
+            denominator = (denominator * (i + 1)) % MOD;
+        }
+        return (int) ((numerator * modInverse(denominator)) % MOD);
+    }
+
+    public static int numberOfPaths(int M, int N) {
+        return nCk(M + N - 2, M - 1);
+    }
+
+    public static void main(String[] args) {
+        int M = 10;
+        int N = 100000000;
+        int result = numberOfPaths(M, N);
+        System.out.println(result);
+     }
+
 }
