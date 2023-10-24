@@ -30,9 +30,8 @@ class GFG{
 // } Driver Code Ends
 
 
-
-
 //User function Template for Java
+
 
 class Solution{
     static int knapSack(int N, int W, int val[], int wt[])
