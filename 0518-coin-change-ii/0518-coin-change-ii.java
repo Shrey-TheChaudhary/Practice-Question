@@ -19,7 +19,7 @@ class Solution {
                 if(coins[ind]<=cap)
                     taken=dp[ind][cap-coins[ind]];
                 
-                dp[ind][cap]=+nottaken+taken;
+                dp[ind][cap]=nottaken+taken;
             }
         }
         return dp[n-1][amount];
