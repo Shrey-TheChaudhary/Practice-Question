@@ -14,25 +14,33 @@
  * }
  */
 class Solution {
-    int max = 0;
-    public int longestZigZag(TreeNode root) {
-        if(root.left != null){
-            traverse(root.left,true,1);
-        }
-        if(root.right != null){
-            traverse(root.right,false,1);
-        }
-        return max;
+    int max_m=Integer.MIN_VALUE;
+    public int helper(boolean left, boolean right, TreeNode root,int max,HashMap<TreeNode,Integer> dp)
+    {
+        if(root==null)
+	        return 0;
+        
+	        if(dp.containsKey(root))
+	        	return dp.get(root);
+        
+	        if(left==true && root.left!=null)
+	        helper(false,true,root.left,max+1,dp);
+        
+	        if(right==true && root.right!=null)
+	        helper(true,false,root.right,max+1,dp);
+        
+	        max_m=Math.max(max_m,max);
+	        dp.put(root, max_m);
+        
+	        max=0;
+	        helper(false,true,root.left,1,dp);
+	        helper(true,false,root.right,1,dp);
+	        return max_m;
     }
-    public void traverse(TreeNode root,boolean left,int count){
-        if(max < count){
-            max = count;
-        }
-        if(root.left != null){
-            traverse(root.left,true,!left?count+1:1);
-        }
-        if(root.right != null){
-            traverse(root.right,false,left?count+1:1);
-        }
+    public int longestZigZag(TreeNode root) {
+      if(root.left==null && root.right==null)
+	        return 0;
+	        HashMap<TreeNode, Integer> dp=new HashMap<>();
+	        return Math.max(helper(false,true,root.left,1,dp),helper(true,false,root.right,1,dp));
     }
 }
