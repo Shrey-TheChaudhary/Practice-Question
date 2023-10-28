@@ -24,7 +24,6 @@ class GFG
 
 
 //User function Template for Java
-
 class Solution
 {
     public int is_bleak(int n)
