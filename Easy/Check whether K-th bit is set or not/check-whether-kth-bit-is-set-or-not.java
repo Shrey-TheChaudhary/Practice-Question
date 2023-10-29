@@ -8,6 +8,7 @@ import java.util.*;
 // } Driver Code Ends
 //User function Template for Java
 
+
 class CheckBit
 {
     static boolean checkKthBit(int n, int k)
