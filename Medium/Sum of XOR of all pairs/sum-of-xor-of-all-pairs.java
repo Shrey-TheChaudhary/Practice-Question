@@ -53,7 +53,7 @@ class Solution{
    
     // Function for finding maximum and value pair
     public long sumXOR (int arr[], int n) {
-         long ans=0;
+        long ans=0;
         for(int i=0;i<32;i++)
         {
             int ones=0;
