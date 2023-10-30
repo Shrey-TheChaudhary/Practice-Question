@@ -1,4 +1,6 @@
 class Solution {
+    
+    //Striver
     public int minEatingSpeed(int[] piles, int h) {
         int max=0;
         for(int x:piles)
