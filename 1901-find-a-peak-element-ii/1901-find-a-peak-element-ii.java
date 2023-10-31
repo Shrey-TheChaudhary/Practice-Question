@@ -7,7 +7,7 @@ class Solution {
 
         while (low <= high) {
             int mid = (low + high) / 2;
-            int row = maxEl(mat, n, m, mid);
+            int row = maxEl(mat, n, m, mid);//index of maximum element in column
             int left = mid - 1 >= 0 ? mat[row][mid - 1] : -1;
             int right = mid + 1 < m ? mat[row][mid + 1] : -1;
 
