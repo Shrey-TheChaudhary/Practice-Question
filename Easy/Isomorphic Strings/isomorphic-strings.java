@@ -32,8 +32,6 @@ public class Driver {
 // } Driver Code Ends
 
 
-
-
 class Solution
 {
     //Function to check if two strings are isomorphic.
