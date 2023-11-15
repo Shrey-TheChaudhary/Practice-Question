@@ -24,8 +24,9 @@ class GFG {
 
 
 // User function Template for Java
+
 class Solution {
-    public static String betterString(String str1, String str2) {
+       public static String betterString(String str1, String str2) {
         int count1 = countDistinctSubsequences(str1);
         int count2 = countDistinctSubsequences(str2);
 
@@ -56,4 +57,5 @@ class Solution {
 
         return dp[n];
     }
+
 }
