@@ -74,7 +74,6 @@ class GFG{
 
 
 //User function Template for Java
-
 class Solution{
 
     public String findString(int n, int k){
