@@ -125,8 +125,6 @@ class GfG {
 // } Driver Code Ends
 
 
-
-
 //User function Template for Java
 
 
@@ -185,3 +183,4 @@ head.left = last;   // joining haed with last node
 return head;
 }
 }
+    
