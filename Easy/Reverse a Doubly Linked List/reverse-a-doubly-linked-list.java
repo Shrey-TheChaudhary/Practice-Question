@@ -105,7 +105,6 @@ public static Node reverseDLL(Node  head)
     return head;
 }
 
-
 //{ Driver Code Starts.
 
 public static boolean verify(Node head)
