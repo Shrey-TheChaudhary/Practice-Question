@@ -94,10 +94,11 @@ class GFG
 
 //User function Template for Java
 
-class Solution{
-    int count=0;
-    public int sumK(Node root,int k){
-        // code here 
+class Solution
+{   int count=0;
+    public int sumK(Node root,int k)
+    {
+          // code here 
         HashMap<Integer, Integer> hm = new HashMap<>();
         solve(root, k, 0, hm);
         return count;
