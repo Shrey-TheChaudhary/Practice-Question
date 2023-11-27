@@ -5,7 +5,6 @@ using namespace std;
 // } Driver Code Ends
 
 
-
 class Disjoint_Set
      {
     
