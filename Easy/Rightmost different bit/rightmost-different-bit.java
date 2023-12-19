@@ -34,7 +34,6 @@ class Main{
 
 
 //User function Template for Java
-
 class Solution
 {
     //Function to find the first position with different bits.
