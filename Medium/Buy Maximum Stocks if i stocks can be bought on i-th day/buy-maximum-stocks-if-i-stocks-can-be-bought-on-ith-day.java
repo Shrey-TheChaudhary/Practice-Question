@@ -32,7 +32,6 @@ class GFG {
 // } Driver Code Ends
 
 
-        
 class Solution {
     public static int buyMaximumProducts(int n, int k, int[] price) {
            PriorityQueue<Value> priorityQueue=new PriorityQueue<Value>();
