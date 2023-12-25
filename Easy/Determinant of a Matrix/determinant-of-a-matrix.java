@@ -27,7 +27,6 @@ class GFG
 
 
 
-
 class Solution{
     static int determinantOfMatrix(int matrix[][], int n){
         if(n==2){
