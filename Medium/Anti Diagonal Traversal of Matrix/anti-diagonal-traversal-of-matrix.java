@@ -38,7 +38,7 @@ class Solution
 {
     public int[] antiDiagonalPattern(int[][] matrix)
     {
-        int n = matrix.length;
+         int n = matrix.length;
         int ans [] = new int [n*n];
         
         int sum = 0,k=0;
