@@ -32,7 +32,7 @@ class GfG
 
 class Solution
 {
- int kSubstrConcat(int n, String s, int k)
+    int kSubstrConcat(int n, String s, int k)
     {
         int ans = 0;
         if(n%k!=0) return ans;
