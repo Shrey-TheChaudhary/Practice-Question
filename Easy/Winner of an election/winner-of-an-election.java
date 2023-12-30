@@ -33,7 +33,6 @@ class GfG
 
 //User function Template for Java
 
-
 class Solution
 {
      public static String[] winner(String arr[], int n)
