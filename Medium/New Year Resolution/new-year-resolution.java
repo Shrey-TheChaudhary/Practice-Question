@@ -55,7 +55,6 @@ class GFG {
 // } Driver Code Ends
 
 
-
 class Solution {
     private static boolean solve(int arr[], int sum, int idx, Boolean dp[][]) {
         if(idx == arr.length)
