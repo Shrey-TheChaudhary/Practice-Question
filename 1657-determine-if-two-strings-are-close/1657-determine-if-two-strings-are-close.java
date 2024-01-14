@@ -10,8 +10,7 @@ class Solution {
         for(int i = 0 ; i < n ; i++)
         {
         hm1.put(s.charAt(i),hm1.getOrDefault(s.charAt(i), 0)+1);
-            
-    hm2.put(t.charAt(i), hm2.getOrDefault(t.charAt(i), 0)+1);
+        hm2.put(t.charAt(i), hm2.getOrDefault(t.charAt(i), 0)+1);
         }        
         
         for(int j= 0 ; j < m ;j++ )
