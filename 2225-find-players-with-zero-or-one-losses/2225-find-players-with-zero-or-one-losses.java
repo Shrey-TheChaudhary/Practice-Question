@@ -10,13 +10,14 @@ class Solution {
             loser.put(matches[i][1],loser.getOrDefault(matches[i][1],0)+1);
         }
         for(Map.Entry<Integer,Integer> entry:winner.entrySet()){
+            int a=entry.getKey();
             if(!loser.containsKey(entry.getKey()))
-                l1.add(entry.getKey());
+                l1.add(a);
         }
          for(Map.Entry<Integer,Integer> entry:loser.entrySet()){
-          
-             if(loser.get(entry.getKey())==1)
-                 l2.add(entry.getKey());
+            int a=entry.getKey();
+             if(loser.get(a)==1)
+                 l2.add(a);
         }
         ans.add(l1);
         ans.add(l2);
