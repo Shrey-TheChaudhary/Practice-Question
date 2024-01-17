@@ -36,6 +36,7 @@ class GFG {
 
 
 //User function Template for Java
+
 class Solution {
     static ArrayList<ArrayList<Integer>> uniquePerms(ArrayList<Integer> arr , int n) {
         Set<ArrayList<Integer>> ans = new HashSet<>();
