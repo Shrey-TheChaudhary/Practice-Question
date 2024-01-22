@@ -64,52 +64,53 @@ class Main {
 
 //User function Template for Java
 
-class Solution
-{
-    static int[] findOrder(int n, int m, ArrayList<ArrayList<Integer>> prerequisites) 
-    {
-         ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+class Solution {
+    static int[] findOrder(int n, int m, ArrayList<ArrayList<Integer>> prerequisites) {
+        // add your code here
+        ArrayList<Integer>[] graph = new ArrayList[n];
         for (int i = 0; i < n; i++) {
-            adj.add(new ArrayList<>());
+            graph[i] = new ArrayList<>();
         }
 
-        for (int i = 0; i < m; i++) {
-            adj.get(prerequisites.get(i).get(1)).add(prerequisites.get(i).get(0));
-        }
-        int indegree[] = new int[n];
-        for (int i = 0; i < n; i++) {
-            for (int it : adj.get(i)) {
-                indegree[it]++;
-            }
-        }
-        Queue<Integer> q = new LinkedList<Integer>();
-        for (int i = 0; i < n; i++) {
-            if (indegree[i] == 0) {
-                q.add(i);
-            }
+        int[] inDegree = new int[n];
+
+        for (int i = 0; i < prerequisites.size(); i++) {
+            int course = prerequisites.get(i).get(0);
+            int prerequisiteForCourse = prerequisites.get(i).get(1);
+            graph[prerequisiteForCourse].add(course);
+            inDegree[course]++;
         }
 
+        Queue<Integer> queue = new LinkedList<>();
 
-        int topo[] = new int[n];
-        int ind = 0;
-        while (!q.isEmpty()) 
-        {
-            int node = q.peek();
-
-            q.remove();
-            topo[ind++] = node;
-
-            for (int it : adj.get(node)) {
-                indegree[it]--;
-                if (indegree[it] == 0) q.add(it);
+        for (int i = 0; i < inDegree.length; i++) {
+            if (inDegree[i] == 0) {
+                queue.add(i);
             }
         }
 
+        int[] answer = new int[n];
+        int index = 0;
 
-        if (ind == n) 
-        return topo;
-        int[] arr = {};
-        return arr;
-    
+        while (!queue.isEmpty()) {
+            int curr = queue.remove();
+            answer[index++] = curr;
+
+            for (int e : graph[curr]) {
+                inDegree[e]--;
+
+                if (inDegree[e] == 0) {
+                    queue.add(e);
+                }
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (inDegree[i] > 0) {
+                return new int[0]; // if cycle exists
+            }
+        }
+
+        return answer;
     }
 }
