@@ -32,7 +32,7 @@ class Solution {
             if(a[nums[i]]==0)
                 a[nums[i]]=-1;
             else
-                a[nums[i]]*=-1;
+                a[nums[i]]=1;
         }
         for(int i=1;i<=nums.length;i++){
             if(a[i]==1)
