@@ -21,6 +21,7 @@ public class Main{
 } 
 // } Driver Code Ends
 
+
 class Solution{
     public long findNthNumer(int n, int k){
         // Code Here.
