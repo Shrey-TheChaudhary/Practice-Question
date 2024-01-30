@@ -1,34 +1,30 @@
 class Solution {
     public int evalRPN(String[] tokens) {
-        Stack<String> stack = new Stack<>();
-        for(String token: tokens)
-        {
-            if("+".equalsIgnoreCase(token))
-            {
-                int a = Integer.valueOf(stack.pop());
-                int b = Integer.valueOf(stack.pop());
-                token = String.valueOf(b+a);
+        int a, b;
+        Stack<Integer> stack = new Stack<>();
+        for (String token : tokens) {
+            switch (token) {
+                case "+":
+                    stack.add(stack.pop() + stack.pop());
+                    break;
+                case "*":
+                    stack.add(stack.pop() * stack.pop());
+                    break;
+                case "/":
+                    a = stack.pop();
+                    b = stack.pop();
+                    stack.add(b / a);
+                    break;
+                case "-":
+                    a = stack.pop();
+                    b = stack.pop();
+                    stack.add(b - a);
+                    break;
+                default:
+                    stack.add(Integer.parseInt(token));
+                    break;
             }
-            if("-".equalsIgnoreCase(token))
-            {
-                int a = Integer.valueOf(stack.pop());
-                int b = Integer.valueOf(stack.pop());
-                token = String.valueOf(b-a);
-            }
-            if("*".equalsIgnoreCase(token))
-            {
-                int a = Integer.valueOf(stack.pop());
-                int b = Integer.valueOf(stack.pop());
-                token = String.valueOf(b*a);
-            }
-            if("/".equalsIgnoreCase(token))
-            {
-                int a = Integer.valueOf(stack.pop());
-                int b = Integer.valueOf(stack.pop());
-                token = String.valueOf(b/a);
-            }
-            stack.add(token);
         }
-        return Integer.valueOf(stack.pop());
+        return stack.pop();
     }
 }
