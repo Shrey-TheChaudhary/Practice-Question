@@ -48,41 +48,48 @@ class GFG {
 // } Driver Code Ends
 // User function Template for Java
 
+/*
+static final int ALPHABET_SIZE = 26;
 
+    // trie node
+    static class TrieNode {
+        TrieNode[] children = new TrieNode[ALPHABET_SIZE];
+
+        // isEndOfWord is true if the node represents
+        // end of a word
+        boolean isEndOfWord;
+
+        TrieNode() {
+            isEndOfWord = false;
+            for (int i = 0; i < ALPHABET_SIZE; i++) children[i] = null;
+        }
+    };
+*/
 //Function to insert string into TRIE.
 static void insert(TrieNode root, String key) 
 {
-    TrieNode curr=root;
-    for(int i=0;i<key.length();i++)
-    {
-        int idx=key.charAt(i)-'a';
-        if(curr.children[idx]==null)
-        curr.children[idx]=new TrieNode();
-        
-        curr=curr.children[idx];
+    // Your code here
+    for(char ch: key.toCharArray()){
+        if(root.children[ch-'a'] == null){
+            root.children[ch-'a'] = new TrieNode();
+        }
+        root = root.children[ch-'a'];
     }
-    curr.isEndOfWord=true;
+    root.isEndOfWord = true;
 }
 
 //Function to use TRIE data structure and search the given string.
 static boolean search(TrieNode root, String key)
 {
-   TrieNode curr=root;
-   for(int i=0;i<key.length();i++)
-   {
-       int idx=key.charAt(i)-'a';
-       
-       if(curr.children[idx]==null)
-       return false;
-       
-       curr=curr.children[idx];
-   }
-   return curr.isEndOfWord;
-   }
-
-
-
-
+    // Your code here
+    for(char ch: key.toCharArray()){
+        if(root.children[ch-'a'] == null){
+            return false;
+        }
+        root = root.children[ch-'a'];
+    }
+    return root.isEndOfWord;
+}
 
 //{ Driver Code Starts.
 }
