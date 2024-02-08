@@ -103,8 +103,6 @@ class Is_Leaves_At_Same_Level
 // } Driver Code Ends
 
 
-
-
 //User function Template for Java
 
 /* A Binary Tree node
