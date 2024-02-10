@@ -37,7 +37,7 @@ class GFG
 //User function Template for Java
 
 class Solution {
-  long numberOfPath(int n, int k, int [][]arr) {
+   long numberOfPath(int n, int k, int [][]arr) {
         // code here
         long dp[][][] = new long[n][n][k+1];
         if(arr[n-1][n-1] <=k){
