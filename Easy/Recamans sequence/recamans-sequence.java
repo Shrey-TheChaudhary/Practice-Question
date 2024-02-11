@@ -28,19 +28,21 @@ class GFG{
 
 class Solution{
     static ArrayList<Integer> recamanSequence(int n){
-       ArrayList<Integer> a = new ArrayList<Integer>();
-        a.add(0);
-        for(int i=1; i<n; i++)
-        {
-            int c = i-1;
-            int b=a.get(c)-i;
-            if(b<0||a.contains(b))
-            {
-                b =a.get(c)+i;
+        ArrayList<Integer> seq = new ArrayList<>();
+        HashSet<Integer> s = new HashSet<>();
+        seq.add(0);
+        s.add(0);
+        int i =1;
+        while(i < n) {
+            int prev = seq.get(i - 1);
+            int next = prev - i;
+            if (next < 0 || s.contains(next)) {
+                next = prev + i;
             }
-          a.add(b);
+            seq.add(next);
+            s.add(next);
+            i++;
         }
-        return a;
-        
+        return seq;
     }
 }
