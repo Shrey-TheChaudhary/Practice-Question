@@ -21,7 +21,6 @@ class GfG
 
 
 //User function Template for Java
-
 class Solution
 {
     public int maxSum(int n) 
