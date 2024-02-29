@@ -30,7 +30,6 @@ public class Main {
 //User function Template for Java
 
 
-
 class Solution {
     long sumBitDifferences(int[] arr, int n) {
         // code here
