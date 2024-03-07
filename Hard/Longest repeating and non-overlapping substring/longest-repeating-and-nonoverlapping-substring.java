@@ -23,7 +23,6 @@ class GFG {
 
 
 //User function Template for Java
-
 class Solution {
     static String longestSubstring(String s, int n) {
         String res = "";
