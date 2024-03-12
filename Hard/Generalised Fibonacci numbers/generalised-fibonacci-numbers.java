@@ -27,6 +27,7 @@ class GFG {
 
 
 //User function Template for Java
+//User function Template for Java
 class Solution {
 
     public static long genFibNum(Long a, Long b, Long c, long n, long m) {
@@ -79,4 +80,3 @@ class Solution {
         }
     }
 }
-
