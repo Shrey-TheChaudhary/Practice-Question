@@ -25,7 +25,6 @@ class GFG {
 
 
 // User function Template for Java
-
 class Solution {
     int largestSubsquare(int n, char a[][]) {
         // code here
