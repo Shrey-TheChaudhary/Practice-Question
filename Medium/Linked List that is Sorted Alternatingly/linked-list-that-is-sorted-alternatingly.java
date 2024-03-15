@@ -59,6 +59,7 @@ class Node {
     }
 }
 */
+
 class Solution {
    public Node reverse(Node head){
        if(head.next==null) return head;
