@@ -65,7 +65,7 @@ class Solution {
 
     public static int countPairs(LinkedList<Integer> head1, LinkedList<Integer> head2,
                           int x) {
-        Set<Integer> set1 = new HashSet<>(head1); 
+         Set<Integer> set1 = new HashSet<>(head1); 
         int count = 0; 
         
         for (int num : head2) {
