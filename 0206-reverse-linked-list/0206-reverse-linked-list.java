@@ -20,7 +20,8 @@ class Solution {
             prev = curr;
             curr = temp; 
         }
-        return prev;
+        curr= prev;
+        return curr;
     }
 
 }
