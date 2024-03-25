@@ -24,7 +24,6 @@ class GFG {
 
 
 //User function Template for Java
-
 class Solution {
     public void solve(String a, int i, int r, ArrayList<String>re){
         
