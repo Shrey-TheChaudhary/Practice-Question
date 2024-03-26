@@ -17,6 +17,7 @@ public class GFG {
 // } Driver Code Ends
 
 
+// User function Template for Java
 class Solution {
      public boolean isAdditiveSequence(String n) {
           s = n;
