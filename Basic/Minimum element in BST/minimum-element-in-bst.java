@@ -1,15 +1,16 @@
 //{ Driver Code Starts
 // Initial Template for Java
 
-import java.util.LinkedList;
-import java.util.Queue;
 import java.io.*;
 import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 class Node {
     int data;
     Node left;
     Node right;
+
     Node(int data) {
         this.data = data;
         left = null;
@@ -74,6 +75,7 @@ class GfG {
 
         return root;
     }
+
     static void printInorder(Node root) {
         if (root == null) return;
 
@@ -84,15 +86,14 @@ class GfG {
     }
 
     public static void main(String[] args) throws IOException {
-        BufferedReader br =
-            new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int t = Integer.parseInt(br.readLine());
 
         while (t > 0) {
             String s = br.readLine();
             Node root = buildTree(s);
-            Tree g = new Tree();
+            Solution g = new Solution();
             System.out.println(g.minValue(root));
             t--;
         }
@@ -116,16 +117,17 @@ class Node {
     }
 }
 */
-
-
-class Tree {
-    int minValue(Node node) {
-        if(node == null)
-            return -1;
+class Solution {
+    // Function to find the minimum element in the given BST.
+    int minValue(Node root) {
+       if(root == null) return -1;
+        Node prev = null;
         
-        if(node.left != null)
-            return minValue(node.left);
+        while(root != null){
+            prev = root;
+            root = root.left;
+        }
         
-        return node.data;
+        return prev.data;
     }
 }
