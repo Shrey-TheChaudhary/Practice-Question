@@ -121,7 +121,6 @@ class Node
     }
 }
 */
-
 class Solution {
     public long merge(int[] arr, int s, int mid, int e) {
         long[] temp = new long[e - s + 1];
