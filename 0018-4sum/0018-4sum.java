@@ -39,7 +39,7 @@ class Solution {
                         k++;
                         l--;
 
-                    
+                    // skip the duplicates:
                     while(k<l&&nums[l]==nums[l+1])
                     {
                         l--;
