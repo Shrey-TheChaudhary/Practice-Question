@@ -1,7 +1,6 @@
 class Solution {
     public int[] sortArray(int[] nums) {
         mergeSort(nums, 0, nums.length - 1);
-        System.gc();
         return nums;
     }
 
