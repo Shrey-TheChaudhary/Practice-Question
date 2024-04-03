@@ -1,7 +1,6 @@
 class Solution {
     public int majorityElement(int[] nums) {
-  
-        
+        //Moore’s Voting Algorithm:
         int count = 0, maxElement = 0;
         for(int num: nums)
         {
