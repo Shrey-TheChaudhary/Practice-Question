@@ -33,12 +33,13 @@ class Solution {
         
         while (right < n) 
         {
-            if (hm.containsKey(s.charAt(right))) 
-                left = Math.max(hm.get(s.charAt(right)) + 1, left);
+            char ch=s.charAt(right);
+            if (hm.containsKey(ch)) 
+                left = Math.max(hm.get(ch)+1,left);
 
-            hm.put(s.charAt(right), right);
+            hm.put(ch, right);
 
-            len = Math.max(len, right - left + 1);
+            len = Math.max(len, right-left + 1);
             right++;
         }
         return len;
