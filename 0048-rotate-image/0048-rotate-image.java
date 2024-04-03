@@ -14,15 +14,15 @@ class Solution {
     // Reversing each row of the matrix
      for(int i = 0; i < n; i ++) 
      {
-         int low = 0, high = n - 1;
-         while(low <= high) 
-         {
-        int temp = matrix[i][high];
-        matrix[i][high] = matrix[i][low];
-        matrix[i][low] = temp;
-        high --;
-        low ++;
-         }
+        int low = 0, high = n - 1;
+        while(low <= high) 
+        {
+          int temp = matrix[i][high];
+          matrix[i][high] = matrix[i][low];
+          matrix[i][low] = temp;
+          high --;
+          low ++;
+        }
      }
     }
 }
