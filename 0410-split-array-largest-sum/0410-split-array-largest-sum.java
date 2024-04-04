@@ -9,7 +9,7 @@ class Solution {
 
         while(low <= high) {
             int mid = low + (high - low) / 2;
-            if(isSplittable(mid,nums,k)) 
+            if(isSplittable(nums,mid,k)) 
                 high = mid - 1;
             else 
                 low = mid + 1;
@@ -17,7 +17,7 @@ class Solution {
         return low;
     }
     
-    public boolean isSplittable(int maxSum , int[] nums , int k) {
+    public boolean isSplittable(int[] nums,int maxSum,int k) {
        int currentSum = 0 , count = 1;
        for(int num : nums) 
        {
@@ -33,6 +33,4 @@ class Solution {
        }
        return true;
     }
-
-   
 }
