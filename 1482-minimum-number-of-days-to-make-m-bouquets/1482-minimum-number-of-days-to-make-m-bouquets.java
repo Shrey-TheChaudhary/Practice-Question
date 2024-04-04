@@ -1,56 +1,49 @@
-class Solution 
-{
-    public int minDays(int[] bloomDay, int m, int k) 
-    {   
-        if (m*k> bloomDay.length)
-            return -1;
-        int ans=-1;
+class Solution {
+    //Striver
+    public int minDays(int[] bloomDay, int m, int k) {
+         long val = (long) m * k;
         
-         int low=0;
-        int high=0;
-        for(int bloom:bloomDay)
-          high= Math.max(high,bloom);
+        int n = bloomDay.length; // Size of the array
+        if (val > n) 
+            return -1; // Impossible case.
         
-        while (low<=high)
-        {
-            int mid= low+ (high-low)/2; 
-            
-            if (isPossible(bloomDay, mid, m, k)){   
-                ans= mid;
-                high= mid-1;
-            }
-            else
-                low= mid+1; 
+        // Find maximum and minimum:
+        int mini = Integer.MAX_VALUE, maxi = Integer.MIN_VALUE;
+        for (int x:bloomDay) {
+            mini = Math.min(mini,x);
+            maxi = Math.max(maxi,x);
         }
-        return ans;
-       
-    }
-    public boolean isPossible(int arr[], int mid, int bouquets, int k) 
-    {   
-        int flowers=0;
-        int boqs=0;
 
-        for (int i=0; i<arr.length; i++)
+        // Apply binary search:
+        int low = mini, high = maxi;
+        while (low <= high) 
         {
-            if (arr[i]>mid) 
-                flowers=0; 
-            
-            else 
-            {
-                flowers++; 
-                if (flowers==k)
-                {
-                    boqs++; 
-                    flowers=0; 
-                }
-                else
-                    continue;
-            }
-            
+            int mid = (low + high) / 2;
+            if (possible(bloomDay, mid, m, k)) 
+                high = mid - 1;
+             else 
+                low = mid + 1;
         }
-        if (boqs>= bouquets) 
-            return true;
-        else 
-            return false;
+        return low;
+    }
+      public static boolean possible(int[] bloomDay, int day, int m, int k) 
+      {
+        int n = bloomDay.length; // Size of the array
+        int count = 0;
+        int bouquets  = 0;
+        // Count the number of bouquets:
+        for (int i = 0; i < n; i++) 
+        {
+            if (bloomDay[i] <= day)
+                count++;
+            
+             else 
+             {
+                bouquets  += (count / k);
+                count = 0;
+            }
+        }
+        bouquets  += (count / k);
+        return bouquets  >= m;
     }
 }
