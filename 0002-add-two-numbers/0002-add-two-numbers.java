@@ -29,8 +29,7 @@ class Solution {
             }
             sum += carry;
             carry = sum/10; 
-            ListNode node = new ListNode(sum % 10); 
-            curr.next = node; 
+            curr.next = new ListNode(sum % 10);  
             curr = curr.next; 
         }
         return dummy.next;
