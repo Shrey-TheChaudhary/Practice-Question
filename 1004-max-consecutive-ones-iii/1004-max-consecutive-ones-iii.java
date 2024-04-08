@@ -23,6 +23,8 @@
 //     }
 // }
 
+
+//STRIVER
 class Solution {
     public int longestOnes(int[] nums, int k) {
         int count  = 0;
@@ -32,10 +34,13 @@ class Solution {
         int n = nums.length;
 
         while(r<n){
-            if(nums[r]==0) count++;
+            if(nums[r]==0) 
+                count++;
 
-            while(count>k){
-                if(nums[l] == 0) count--;
+            if(count>k){
+                if(nums[l] == 0) 
+                    
+                    count--;
                 l++;
             }
 
