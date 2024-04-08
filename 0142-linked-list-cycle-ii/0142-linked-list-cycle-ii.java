@@ -9,14 +9,39 @@
  *     }
  * }
  */
+// public class Solution {
+//     public ListNode detectCycle(ListNode head) {
+//         //using hashset
+//         Set<ListNode> nodes = new HashSet<>();
+//         while (head != null && !nodes.contains(head)) {
+//             nodes.add(head);
+//             head = head.next;
+//         }
+//         return head;
+//     }
+// }
+
 public class Solution {
     public ListNode detectCycle(ListNode head) {
-        //using hashset
-        Set<ListNode> nodes = new HashSet<>();
-        while (head != null && !nodes.contains(head)) {
-            nodes.add(head);
-            head = head.next;
+        ListNode fast = head;
+        ListNode slow = head;
+        
+        while (fast != null && fast.next != null) 
+        {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (fast == slow) 
+            {
+                slow = head;
+                
+                while (slow != fast) 
+                {
+                    slow = slow.next;
+                    fast = fast.next;
+                }
+                return slow;
+            }
         }
-        return head;
+        return null;
     }
 }
