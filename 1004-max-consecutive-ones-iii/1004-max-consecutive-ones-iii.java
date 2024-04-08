@@ -8,7 +8,7 @@ class Solution {
             if(nums[j]==0) 
                 countZeroes++;
             
-            while(countZeroes>k)
+            if(countZeroes>k)
             {
                 if(nums[i]==0) 
                     countZeroes--;
