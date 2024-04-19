@@ -13,6 +13,7 @@ class Solution {
         {
             if(i>index && arr[i]==arr[i-1]) 
                 continue;
+            
             li.add(arr[i]);
             sub(i+1,arr,ans,li);
             li.remove(li.size()-1);
