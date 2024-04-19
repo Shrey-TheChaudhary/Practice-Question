@@ -22,8 +22,6 @@ class Solution {
             temp.add(nums[i]);
             solve(i,nums,temp,list,target-nums[i]);
             temp.remove(temp.size()-1);          
-            
         }
-        
     }
 }
