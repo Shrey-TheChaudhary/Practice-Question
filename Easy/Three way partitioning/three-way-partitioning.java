@@ -95,12 +95,6 @@ class GFG{
 // } Driver Code Ends
 
 
-//Initial Template for Java
-
-
-// } Driver Code Ends
-
-
 //User function Template for Java
 
 class Solution{
