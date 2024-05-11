@@ -24,7 +24,6 @@ class GFG {
 
 
 // User function Template for Java
-
 class Solution {
     static List<Integer> jugglerSequence(int n) {
         // code here
