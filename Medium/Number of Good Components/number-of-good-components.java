@@ -56,7 +56,6 @@ class GFG {
 // } Driver Code Ends
 
 
-
 class Solution {
 
     public int findNumberOfGoodComponent(int numberOfEdges, int numberOfVertices, int[][] edges) {
