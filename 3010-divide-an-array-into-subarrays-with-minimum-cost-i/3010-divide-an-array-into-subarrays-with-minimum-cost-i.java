@@ -1,6 +1,6 @@
 class Solution {
   public int minimumCost(int[] nums) {
-    int n = nums.length;
+    final int n = nums.length;
     int[] left = Arrays.copyOfRange(nums, 1, n);
     Arrays.sort(left);
 
