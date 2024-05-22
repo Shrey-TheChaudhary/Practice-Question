@@ -29,6 +29,7 @@ class GFG {
 
 
 // User function Template for Java
+
 class Solution {
     static double findSmallestMaxDist(int a[], int k) {
         int n=a.length;
