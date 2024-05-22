@@ -1,5 +1,9 @@
 class Solution {
     public boolean hasTrailingZeros(int[] nums) {
-        return Arrays.stream(nums).filter(num -> num % 2 == 0).count() > 1;
+        int count = 0;
+        for (int x : nums) {
+            count += (x & 1 ^ 1);
+        }
+        return count >= 2;
     }
 }
