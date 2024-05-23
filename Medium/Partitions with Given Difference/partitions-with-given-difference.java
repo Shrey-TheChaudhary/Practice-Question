@@ -59,6 +59,7 @@ class GFG {
 // } Driver Code Ends
 
 
+
 class Solution {
     static int mod = 1000000007;
     public static int countPartitions(int n, int d, int[] arr) {
