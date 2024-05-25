@@ -21,7 +21,6 @@ class GFG {
 // } Driver Code Ends
 
 
-
 class Solution {
     long max_Books(int arr[], int n, int k) {
         // Your code here
