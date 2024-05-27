@@ -46,9 +46,6 @@ class GFG {
 
 
 
-
-//User function Template for Java
-
 class Solution{
     static int longestSubseq(int n, int arr[]){
         int dp[]= new int[n];
