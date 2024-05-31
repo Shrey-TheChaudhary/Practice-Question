@@ -20,6 +20,6 @@ class GFG {
 // User function Template for Java
 class Solution {
     static int swapNibbles(int n) {
-        return (n>>4)|((n&15)<<4);
+       return (n>>4)|((n&15)<<4);
     }
 }
