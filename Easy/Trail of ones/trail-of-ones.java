@@ -20,7 +20,7 @@ class GFG {
 
 // User function Template for Java
 class Solution {
-    static int numberOfConsecutiveOnes(int n) {
+   static int numberOfConsecutiveOnes(int n) {
         // code here
         // Initialize an array to store the values, similar to vector<int> dp(n+1, 0);
         int[] dp = new int[n + 1];
