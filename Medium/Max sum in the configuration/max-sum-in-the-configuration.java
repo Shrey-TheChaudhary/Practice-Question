@@ -22,7 +22,7 @@ class Maxsum_Among_All_Rotations_Array {
 
 class Solution {
     long max_sum(int a[], int n) {
-       long curr = 0;
+        long curr = 0;
         long total = 0;
 
         // Calculate the initial curr and total
