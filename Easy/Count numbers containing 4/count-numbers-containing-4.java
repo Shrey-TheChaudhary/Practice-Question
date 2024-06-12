@@ -25,7 +25,7 @@ class GFG {
 
 
 class Solution {
-    public static int countNumberswith4(int n) {
+   public static int countNumberswith4(int n) {
         // code here
         int count = 0;
         while(n>3){
