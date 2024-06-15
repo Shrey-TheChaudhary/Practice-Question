@@ -2,15 +2,17 @@ class Solution {
     public int findCircleNum(int[][] isConnected)
     {
         int n = isConnected.length;
-        boolean[] visited = new boolean[n];
+        boolean[] vis = new boolean[n];
         int provinces = 0;
         
-        for (int i = 0; i < n; i++) {
-            if (!visited[i]) {
-                dfs(isConnected, visited, i);
-                provinces++;
-            }
-        }
+       for(int i=0;i<n;i++)
+       {
+           if(!vis[i])
+           {
+               provinces++;
+               dfs(isConnected,vis,i);
+           }
+       }
         
         return provinces;
     }
