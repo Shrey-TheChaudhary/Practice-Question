@@ -13,8 +13,8 @@ class Solution {
         
         Queue<pair> q= new LinkedList<>();
         
-        int vis[][]=new int [n][m];
-        int fresh=0;
+       int vis[][]=new int[n][m];
+        int cntfresh=0;
         
         for(int i=0;i<n;i++)
         {
@@ -23,49 +23,48 @@ class Solution {
                 if(grid[i][j]==2)
                 {
                     q.add(new pair(i,j,0));
-                    vis[i][j]=2;
+                        vis[i][j]=2;
                 }
-                else
+                else{
                     vis[i][j]=0;
-                
+                }
                 if(grid[i][j]==1)
-                    fresh++;
+                    cntfresh++;
             }
         }
-        int time=0;
+        int tm=0;
         int drow[]={-1,0,1,0};
         int dcol[]={0,1,0,-1};
+        
         int cnt=0;
         
-    while (!q.isEmpty()) 
-    {
-        int r=q.peek().row;
-        int c=q.peek().col;
-        int t=q.peek().tm;
-        
-        time=Math.max(time,t);
-        q.remove();
-        
-        //4 neighbour
-        
-        for(int i=0;i<4;i++)
+        while(!q.isEmpty())
         {
-            int nrow=r+drow[i];
-            int ncol=c+dcol[i];
-            //check coordinates
+            int r=q.peek().row;
+            int c=q.peek().col;
+            int t=q.peek().tm;
             
-            if(nrow>=0 && nrow<n && ncol>=0 && ncol<m && vis[nrow][ncol]==0 && grid[nrow][ncol]==1)
+            tm=Math.max(tm,t);
+            q.remove();
+            
+            //4 neighbors 
+            for(int i=0;i<4;i++)
             {
-                q.add(new pair(nrow,ncol,t+1));
-                vis[nrow][ncol]=2;
-                cnt++;
+                int nrow=r+drow[i];
+                int ncol=c+dcol[i];
+                
+                if(nrow>=0 && nrow<n && ncol>=0 && ncol<m && vis[nrow][ncol]==0 && grid[nrow][ncol]==1)
+                {
+                    q.add(new pair(nrow,ncol,t+1));
+                    vis[nrow][ncol]=2;
+                    cnt++;
+                }
             }
         }
-    }
-        if(cnt!=fresh)
+        if(cnt!=cntfresh)
             return -1;
         
-        return time;
-            
+        return tm;
+        
     }
 }
