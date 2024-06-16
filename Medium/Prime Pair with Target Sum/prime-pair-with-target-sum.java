@@ -44,8 +44,6 @@ class GFG {
 // } Driver Code Ends
 
 
-
-
 class Solution {
     public static ArrayList<Integer> getPrimes(int n) {
         ArrayList<Integer> result = new ArrayList<>();
