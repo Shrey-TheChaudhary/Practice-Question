@@ -20,7 +20,6 @@ class GFG {
 
 
 // User function Template for Java
-
 class Solution {
     int rectanglesInCircle(int r) {
         int d=2*r;
