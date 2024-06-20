@@ -5,13 +5,14 @@ class Solution {
         
          int delrow[] = {-1, 0, +1, 0};
         int delcol[] = {0, 1, 0, -1}; 
+        
         int vis[][] = new int[n][m]; 
     
         for(int j = 0 ; j<m;j++) {
             // check for unvisited Os in the boundary rws
             // first row 
-            if(vis[0][j] == 0 && mat[0][j] == 'O') 
-                dfs(0, j, vis, mat, delrow, delcol); 
+            if(vis[0][j]==0 && mat[0][j]=='O')
+                dfs(0,j,vis,mat,delrow,delcol);
             
             // last row 
             if(vis[n-1][j] == 0 && mat[n-1][j] == 'O') 
@@ -50,7 +51,7 @@ class Solution {
             int ncol = col + delcol[i]; 
             // check for valid coordinates and unvisited Os
             if(nrow >=0 && nrow <n && ncol >= 0 && ncol < m 
-            && vis[nrow][ncol] == 0 && mat[nrow][ncol] == 'O') 
+            &&vis[nrow][ncol]==0 && mat[nrow][ncol]=='O') 
             {
                 dfs(nrow, ncol, vis, mat, delrow, delcol); 
             }
