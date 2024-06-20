@@ -9,10 +9,12 @@ class Solution
            {
              if(color[i] == -1) 
              {
+                 //----BFS-----
+                 
                // if(check(i, graph, color) == false) 
                //    return false;
                  
-                //DFS function 
+                //----DFS function----
                  if(dfs(i, 0, color, graph) == false)
                  return false; 
 
@@ -50,7 +52,8 @@ class Solution
     for (int it = 0; it < adj[node].length; it++) {
         // If uncolored
         if (color[adj[node][it]] == -1) {
-            if (!dfs(adj[node][it], 1 - col, color, adj)) return false; 
+            if (dfs(adj[node][it], 1 - col, color, adj)==false) 
+                return false; 
         }
         // If previously colored and have the same color
         else if (color[adj[node][it]] == col) {
