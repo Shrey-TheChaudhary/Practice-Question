@@ -31,31 +31,35 @@ class Solution {
         Arrays.fill(dist,(int)(1e9));
         
         dist[src]=0;
+      
+        
         while(!q.isEmpty())
         {
-            Tuple it = q.peek(); 
-            q.remove(); 
-            int stops = it.first; 
-            int node = it.second; 
-            int cost = it.third; 
+            Tuple it=q.poll();
+            int step=it.first;
+            int node=it.second;
+            int cost=it.third;
             
-            if(stops>k)
-            continue;
+            if(step>k)
+                continue;
             
-              for(Pair iter: adj.get(node)) 
-              {
-                int adjNode = iter.first; 
-                int edW = iter.second; 
+            for(Pair itr:adj.get(node))
+            {
+                int adjnode=itr.first;
+                int edw=itr.second;
                 
-                 if (cost + edW < dist[adjNode] && stops <= k) {
-                    dist[adjNode] = cost + edW; 
-                    q.add(new Tuple(stops + 1, adjNode, cost + edW)); 
+                if(cost+edw<dist[adjnode] && step<=k)
+                {
+                    dist[adjnode]=cost+edw;
+                    q.add(new Tuple(step+1,adjnode,cost+edw));
                 }
             }
         }
               if(dist[dst]==1e9)
               return -1;
+
               
               return dist[dst];
+        
     }
 }
