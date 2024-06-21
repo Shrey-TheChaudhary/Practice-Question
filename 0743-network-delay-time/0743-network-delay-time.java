@@ -26,6 +26,9 @@ class Solution {
             }
         }
        
-      return (max == Integer.MAX_VALUE)? -1 : max;
+      if (max == Integer.MAX_VALUE)
+          return -1;
+        
+        return max;
     }
 }
