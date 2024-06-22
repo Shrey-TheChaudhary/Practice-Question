@@ -20,6 +20,7 @@ class GFG {
 
 
 // User function Template for Java
+
 class Solution {
     long ExtractNumber(String s) {
         int i=0, n=s.length();
