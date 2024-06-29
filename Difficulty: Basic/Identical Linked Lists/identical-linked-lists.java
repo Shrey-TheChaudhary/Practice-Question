@@ -78,6 +78,7 @@ class Node {
         this.next = null;
     }
 }*/
+
 class Solution {
     // Function to check whether two linked lists are identical or not.
     public boolean areIdentical(Node head1, Node head2) {
