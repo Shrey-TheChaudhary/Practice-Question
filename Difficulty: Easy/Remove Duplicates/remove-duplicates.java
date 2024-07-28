@@ -22,6 +22,7 @@ class GFG {
 
 
 // User function Template for Java
+
 class Solution {
     String removeDups(String str) {
         // code here
