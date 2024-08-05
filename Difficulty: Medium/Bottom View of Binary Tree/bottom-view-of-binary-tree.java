@@ -116,6 +116,7 @@ class GfG {
 
 //User function Template for Java
 
+
 class Pair {
         int horizontal_dist;
         Node node;
