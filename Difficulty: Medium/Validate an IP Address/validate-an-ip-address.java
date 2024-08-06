@@ -32,7 +32,7 @@ public class validip {
 class Solution {
 
     public boolean isValid(String str) {
-        String ar[] = str.split("\\.");
+       String ar[] = str.split("\\.");
         if(ar.length<4){return false;}
         for(String c:ar){
             if((c.length()>1 && c.charAt(0)=='0') || (Integer.parseInt(c)>255 ||
