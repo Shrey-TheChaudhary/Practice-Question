@@ -14,7 +14,8 @@ class Solution {
         
         int sum=0;
      for(int i=0; i<n;i++)
-    sum+=Math.min(lmax[i],rmax[i])- height[i];
+        sum+=Math.min(lmax[i],rmax[i])- height[i];
+        
         return sum;
     }
 }
