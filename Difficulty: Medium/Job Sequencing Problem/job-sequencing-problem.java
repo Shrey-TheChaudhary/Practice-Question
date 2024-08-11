@@ -70,7 +70,6 @@ class Solution {
         return new int[]{jobCount, totalProfit};
     }
 }
-
 /*
 class Job {
     int id, profit, deadline;
