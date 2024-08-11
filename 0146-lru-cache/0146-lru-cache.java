@@ -27,7 +27,7 @@ class LRUCache {
             return;
         }
         if (cache.size() >= cap) {
-            Integer oldestKey = cache.keySet().iterator().next();
+            Integer oldestKey = cache.keySet().iterator().next(); //retrieves the first key from the Set of keys in the cache map
             cache.remove(oldestKey);
             
         }
