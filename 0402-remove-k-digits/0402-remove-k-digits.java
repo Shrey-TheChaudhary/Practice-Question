@@ -1,21 +1,21 @@
 class Solution {
     public String removeKdigits(String num, int k) {
-        Stack<Character> stk = new Stack<>();
+        Stack<Character> st = new Stack<>();
         StringBuilder ans = new StringBuilder();
         
         for (char c : num.toCharArray()) 
         {
-            while (k > 0 && !stk.isEmpty() && stk.peek() > c) {
-                stk.pop();
+            while (k > 0 && !st.isEmpty() && st.peek() > c) {
+                st.pop();
                 k--;
             }
-            stk.push(c);
+            st.push(c);
         }
         while (k > 0) {
-            stk.pop();
+            st.pop();
             k--;
         }
-        for (char c : stk) {
+        for (char c : st) {
             if (ans.length() == 0 && c == '0') 
                 continue;
             ans.append(c);
