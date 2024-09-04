@@ -21,6 +21,6 @@ class GFG {
 
 class Solution {
     public long nthStair(int n) {
-       return 1+(n/2);
+         return 1+(n/2);
     }
 }
