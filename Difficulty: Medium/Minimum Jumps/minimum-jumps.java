@@ -34,6 +34,7 @@ public class Main {
 
 // } Driver Code Ends
 
+
 class Solution {
     static int minJumps(int[] arr) {
         int n = arr.length;
