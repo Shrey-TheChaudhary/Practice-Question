@@ -23,7 +23,6 @@ class GFG {
 
 
 // User function Template for Java
-
 class Solution {
     public int isCircle(String arr[]) {
         int n = arr.length;
