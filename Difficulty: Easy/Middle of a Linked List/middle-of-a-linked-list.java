@@ -52,7 +52,6 @@ class GFG {
     Node(int d)  { data = d;  next = null; }
 }
 */
-
 class Solution {
     int getMiddle(Node head) {
         if(head==null)return 0;
