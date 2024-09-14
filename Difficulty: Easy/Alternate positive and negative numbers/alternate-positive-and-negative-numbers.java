@@ -32,6 +32,7 @@ public class Main {
 
 // User function Template for Java
 
+
 class Solution {
     void rearrange(ArrayList<Integer> arr) {
         // code here
