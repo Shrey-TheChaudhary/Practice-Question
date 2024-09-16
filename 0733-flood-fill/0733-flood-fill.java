@@ -9,20 +9,21 @@ class Solution {
         
         return ans;
     }
-    public void dfs(int row,int col,int ans[][],int image[][],int color,int delrow[],int delcol[],int inicolor)
+     public void dfs(int row,int col,int ans[][],int image[][],int color,int delrow[],int delcol[],int inicolor)
     {
+
         ans[row][col]=color;
         int n=image.length;
         int m=image[0].length;
         
         for(int i=0;i<4;i++)
         {
-            int nrow=row+delrow[i];
-            int ncol=col+delcol[i];
+            int newrow=row+delrow[i];
+            int newcol=col+delcol[i];
             
-            if(nrow>=0 && nrow<n && ncol>=0 && ncol<m && image[nrow][ncol]==inicolor && ans[nrow][ncol]!=color)
+            if(newrow>=0 && newcol>=0 && newrow<n && newcol<m && image[newrow][newcol]==inicolor && ans[newrow][newcol]!=color)
             {
-            dfs(nrow,ncol,ans,image,color,delrow,delcol,inicolor);
+                dfs(newrow,newcol,ans,image,color,delrow,delcol,inicolor);
             }
         }
     }
