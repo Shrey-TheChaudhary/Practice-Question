@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 // } Driver Code Ends
 class Solution {
-    public int maxDistance(int[] arr) {
+   public int maxDistance(int[] arr) {
        
          int n=arr.length;
          int max=0;
