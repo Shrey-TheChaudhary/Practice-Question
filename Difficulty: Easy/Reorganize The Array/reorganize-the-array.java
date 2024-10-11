@@ -6,8 +6,6 @@ import java.util.Scanner;
 
 // } Driver Code Ends
 
-
-
 class Solution {
     public List<Integer> rearrange(List<Integer> arr) {
         // Code here
