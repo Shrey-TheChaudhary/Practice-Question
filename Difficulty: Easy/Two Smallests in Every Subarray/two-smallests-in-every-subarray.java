@@ -22,6 +22,7 @@ class GFG {
 // } Driver Code Ends
 
 
+
 class Solution {
     public int pairWithMaxSum(int[] arr) {
         if(arr.length==1) return -1;
