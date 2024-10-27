@@ -8,7 +8,6 @@ import java.util.*;
 // } Driver Code Ends
 
 
-
 class Solution {
     public boolean findTriplet(int[] arr) {
         HashSet<Integer> set = new HashSet<>();
@@ -17,13 +16,10 @@ class Solution {
             set.add(num);
         }
         
-        for(int i = 0; i < arr.length; i++)
-        {
-            for(int j = i+1; j < arr.length; j++)
-            {
+        for(int i = 0; i < arr.length; i++){
+            for(int j = i+1; j < arr.length; j++){
                 int sum = arr[i]+arr[j];
-                if(set.contains(sum)) 
-                return true;
+                if(set.contains(sum)) return true;
             }
         }
         return false;
