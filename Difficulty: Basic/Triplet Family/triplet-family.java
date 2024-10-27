@@ -7,7 +7,6 @@ import java.util.*;
 
 // } Driver Code Ends
 
-
 class Solution {
     public boolean findTriplet(int[] arr) {
         HashSet<Integer> set = new HashSet<>();
