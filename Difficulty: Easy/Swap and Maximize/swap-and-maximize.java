@@ -37,7 +37,6 @@ class Solution {
     }
 }
 
-
 //{ Driver Code Starts.
 class Main {
 
