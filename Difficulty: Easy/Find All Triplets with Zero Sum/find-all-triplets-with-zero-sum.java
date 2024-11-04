@@ -8,7 +8,7 @@ import java.util.*;
 // User function Template for Java
 class Solution {
     public List<List<Integer>> findTriplets(int[] arr) {
-       List<List<Integer>>vis=new ArrayList<>();
+      List<List<Integer>>vis=new ArrayList<>();
         int n=arr.length;
         for(int i=0;i<n;i++){
             int sum=0;
