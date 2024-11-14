@@ -24,6 +24,7 @@ class Solution {
     }
 }
 
+
 //{ Driver Code Starts.
 class GFG {
     public static void main(String[] args) throws IOException {
