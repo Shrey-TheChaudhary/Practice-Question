@@ -29,7 +29,6 @@ class GFG {
 
 
 // User function Template for Java
-
 class Solution {
 
     ArrayList<Integer> search(String pat, String txt) {
