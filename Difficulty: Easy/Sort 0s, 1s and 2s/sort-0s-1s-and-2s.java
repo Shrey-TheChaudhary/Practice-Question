@@ -11,11 +11,9 @@ class GFG {
         while (t-- > 0) {
             String input = br.readLine();
             String[] inputArray = input.split("\\s+");
-            ArrayList<Integer> a = new ArrayList<>();
+            int a[] = new int[inputArray.length];
 
-            for (String s : inputArray) {
-                a.add(Integer.parseInt(s));
-            }
+            for (int i = 0; i < a.length; i++) a[i] = Integer.parseInt(inputArray[i]);
 
             Solution ob = new Solution();
             ob.sort012(a);
@@ -24,39 +22,19 @@ class GFG {
                 System.out.print(num + " ");
             }
             System.out.println();
+            System.out.println("~");
         }
     }
 }
+
 
 // } Driver Code Ends
-
-
 class Solution {
     // Function to sort an array of 0s, 1s, and 2s
-    public void sort012(ArrayList<Integer> arr) {
-        // code here
-         int count0 = 0;
-        int count1 = 0;
-        int count2 = 0;
-        for (int i = 0; i < arr.size(); i++) {
-            if (arr.get(i) == 0) {
-                count0++;
-            } else if (arr.get(i) == 1) {
-                count1++;
-            } else if (arr.get(i) == 2) {
-                count2++;
-            }
-        }
-        arr.clear();
-        for (int i = 0; i < count0; i++) {
-            arr.add(0);
-        }
-        for (int i = 0; i < count1; i++) {
-            arr.add(1);
-        }
-        for (int i = 0; i < count2; i++) {
-            arr.add(2);
-        }
+    public void sort012(int[] arr) {
+    Arrays.sort(arr);
     }
 }
 
+//{ Driver Code Starts.
+// } Driver Code Ends
