@@ -30,7 +30,6 @@ class GFG {
 // } Driver Code Ends
 
 
-// User function Template for Java
 class Solution {
     // Function to find hIndex
   public int hIndex(int[] citations) {
