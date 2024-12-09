@@ -41,7 +41,6 @@ class GFG {
 
 
 // User function Template for Java
-
 class Solution {
     static ArrayList<int[]> insertInterval(int[][] intervals, int[] newInterval) {
         ArrayList<int[]> ans=new ArrayList<>();
