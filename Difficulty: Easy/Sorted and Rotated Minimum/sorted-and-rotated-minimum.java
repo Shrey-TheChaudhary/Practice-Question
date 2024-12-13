@@ -28,7 +28,6 @@ public class Main {
 
 
 // User function Template for Java
-
 class Solution {
     public int findMin(int[] arr) {
         // complete the function here
