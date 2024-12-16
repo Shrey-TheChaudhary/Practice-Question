@@ -35,7 +35,6 @@ class GFG {
 
 
 // User function Template for Java
-
 class Solution {
     public int kthElement(int a[], int b[], int k) {
         
