@@ -13,19 +13,20 @@ class GFG {
             int k = Integer.parseInt(br.readLine().trim());
 
             String[] line1 = br.readLine().trim().split(" ");
-            int[] arr1 = new int[line1.length];
+            int[] a = new int[line1.length];
             for (int i = 0; i < line1.length; i++) {
-                arr1[i] = Integer.parseInt(line1[i]);
+                a[i] = Integer.parseInt(line1[i]);
             }
 
             String[] line2 = br.readLine().trim().split(" ");
-            int[] arr2 = new int[line2.length];
+            int[] b = new int[line2.length];
             for (int i = 0; i < line2.length; i++) {
-                arr2[i] = Integer.parseInt(line2[i]);
+                b[i] = Integer.parseInt(line2[i]);
             }
 
             Solution ob = new Solution();
-            System.out.println(ob.kthElement(k, arr1, arr2));
+            System.out.println(ob.kthElement(a, b, k));
+            System.out.println("~");
         }
     }
 }
@@ -35,33 +36,21 @@ class GFG {
 
 // User function Template for Java
 
-      // code here
 class Solution {
-    public long kthElement(int k, int arr1[], int arr2[]) {
-        // code here
-        int i=0,j=0,idx=0;
-        while(i<arr1.length&&j<arr2.length){
-            if(arr1[i]<=arr2[j]){
-                idx++;
-                if(idx==k) return arr1[i];
-                i++;
-            }else{
-                idx++;
-                if(idx==k) return arr2[j];
-                j++;
-            }
+    public int kthElement(int a[], int b[], int k) {
+        
+        int x = a.length, y = b.length;
+        int c[] = new int[x+y];
+        int idx = 0;
+        
+        for(int i=0; i<x; i++) {
+            c[idx++] = a[i];
         }
-        while(i<arr1.length){
-            idx++;
-            if(idx==k) return arr1[i];
-            i++;
+        for(int i=0; i<y; i++) {
+            c[idx++] = b[i];
         }
-        while(j<arr2.length){
-            idx++;
-            if(idx==k) return arr2[j];
-            j++;
-        }
-        return -1;
+        
+        Arrays.sort(c);
+        return c[k-1];
     }
 }
-  
