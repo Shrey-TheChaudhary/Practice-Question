@@ -29,6 +29,7 @@ class GFG {
 // } Driver Code Ends
 
 
+// User function Template for Java
 class Solution {
     public static int aggressiveCows(int[] stalls, int k) {
         // Step 1: Sort the stalls
