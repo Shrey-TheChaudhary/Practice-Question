@@ -31,7 +31,6 @@ class GFG {
 
 
 //Back-end complete function Template for Java
-
 class Solution {
     public static int findPages(int[] a, int k) {
         int n=a.length;
