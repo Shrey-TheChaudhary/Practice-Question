@@ -28,7 +28,6 @@ class GFG {
 }
 // } Driver Code Ends
 
-
 class Solution {
     public int kthMissing(int[] arr, int k) {
         // code here
