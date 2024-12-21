@@ -32,7 +32,6 @@ class GFG {
 
 
 // User function Template for Java
-
 class Solution {
     // Function to rotate matrix anticlockwise by 90 degrees.
     static void rotateby90(int mat[][]) {
