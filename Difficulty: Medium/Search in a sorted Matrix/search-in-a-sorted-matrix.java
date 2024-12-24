@@ -40,7 +40,7 @@ class GFG {
 class Solution {
     // Function to search a given number in row-column sorted matrix.
     public boolean searchMatrix(int[][] mat, int x) {
-         for(int i[]:mat) for(int j:i) if(j == x) return true;
+       for(int i[]:mat) for(int j:i) if(j == x) return true;
         return false;
     }
 }
