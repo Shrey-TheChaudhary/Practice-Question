@@ -13,34 +13,34 @@
  *     }
  * }
  */
-public class Solution {
-    public List<Integer> largestValues(TreeNode root) {
-        if (root == null) 
-            return new ArrayList<>();
-        
-        List<Integer> ans = new ArrayList<>();
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-        
-        while (!queue.isEmpty()) {
-            int curr_level_size = queue.size();
-            int max_val = Integer.MIN_VALUE;
-            
-            for (int i = 0; i < curr_level_size; i++)
-            {
-                TreeNode node = queue.poll();
-                max_val = Math.max(max_val, node.val);
-                
-                if (node.left != null) 
-                    queue.offer(node.left);
-                
-                if (node.right != null) 
-                    queue.offer(node.right);
-            }
-            
-            ans.add(max_val);
-        }
-        
-        return ans;
+class Solution {
+   public List<Integer> largestValues(TreeNode root) {
+      List<Integer> list=new ArrayList<>();
+      if (root==null)return list;
+      Queue<TreeNode> q=new LinkedList<>();
+      int max=Integer.MIN_VALUE;
+      q.add(root);
+      q.add(null);
+      while (!q.isEmpty()){
+          TreeNode curr=q.poll();
+          if (curr==null){
+              list.add(max);
+              max=Integer.MIN_VALUE;
+              if (q.isEmpty()){
+                  break;
+              }else {
+                  q.add(null);
+              }
+          }else {
+              max=Math.max(max, curr.val);
+              if (curr.left!=null){
+                  q.add(curr.left);
+              }
+              if (curr.right!=null){
+                  q.add(curr.right);
+              }
+          }
+      }
+      return list;
     }
 }
