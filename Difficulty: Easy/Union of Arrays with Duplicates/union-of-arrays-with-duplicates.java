@@ -42,7 +42,6 @@ class Main {
 
 
 // User function Template for Java
-
 class Solution {
     public static int findUnion(int a[], int b[]) {
         HashSet<Integer> set = new HashSet<>();
