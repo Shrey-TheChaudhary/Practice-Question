@@ -24,7 +24,6 @@ public class Main {
 
 // } Driver Code Ends
 
-
 class Solution {
 
     // Function to return length of longest subsequence of consecutive integers.
