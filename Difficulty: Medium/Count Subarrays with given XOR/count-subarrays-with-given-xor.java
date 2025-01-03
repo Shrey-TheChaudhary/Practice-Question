@@ -27,7 +27,7 @@ public class Main {
 
 class Solution {
     public long subarrayXor(int arr[], int k) {
-       HashMap<Integer, Integer> mp = new HashMap<>();
+      HashMap<Integer, Integer> mp = new HashMap<>();
         int xor = 0; 
         long cnt = 0; 
 
