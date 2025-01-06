@@ -43,7 +43,6 @@ public class GFG {
 
 
 // User function Template for Java
-
 class Solution {
     public List<Integer> sumClosest(int[] arr, int target) {
         Arrays.sort(arr);
