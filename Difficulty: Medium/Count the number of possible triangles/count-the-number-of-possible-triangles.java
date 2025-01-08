@@ -26,7 +26,7 @@ class Geeks {
 class Solution {
     // Function to count the number of possible triangles.
     static int countTriangles(int arr[]) {
-        Arrays.sort(arr);
+       Arrays.sort(arr);
         int n = arr.length;
         int res = 0;
 
