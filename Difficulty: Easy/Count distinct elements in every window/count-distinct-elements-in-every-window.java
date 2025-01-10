@@ -38,7 +38,7 @@ class GFG {
 
 class Solution {
     ArrayList<Integer> countDistinct(int arr[], int k) {
-       int i=0,j=k-1;
+        int i=0,j=k-1;
         ArrayList<Integer>res=new ArrayList<>();
         while(j<arr.length)
         {
