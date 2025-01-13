@@ -23,7 +23,7 @@ class Sorting {
 class Solution {
 
     public int maxWater(int arr[]) {
-      int A=0;
+        int A=0;
 
         int left=0,right=arr.length-1;
 
