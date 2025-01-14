@@ -41,7 +41,7 @@ class Main {
 class Solution {
     // Function to find equilibrium point in the array.
     public static int findEquilibrium(int arr[]) {
-       int rightSum = 0;
+      int rightSum = 0;
         for (int i = 0; i < arr.length; i++) {
             rightSum += arr[i];
         }
