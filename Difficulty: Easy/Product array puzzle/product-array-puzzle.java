@@ -6,22 +6,24 @@ import java.util.*;
 
 class GFG {
     public static void main(String args[]) throws IOException {
-        Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(br.readLine());
         while (t > 0) {
-            int n = sc.nextInt();
-            int[] array = new int[n];
+            String inputLine[] = br.readLine().trim().split(" ");
+            int n = inputLine.length;
+            int arr[] = new int[n];
             for (int i = 0; i < n; i++) {
-                array[i] = sc.nextInt();
+                arr[i] = Integer.parseInt(inputLine[i]);
             }
             Solution ob = new Solution();
-            long[] ans = new long[n];
-            ans = ob.productExceptSelf(array);
+            int[] ans = new int[n];
+            ans = ob.productExceptSelf(arr);
 
             for (int i = 0; i < n; i++) {
                 System.out.print(ans[i] + " ");
             }
             System.out.println();
+            System.out.println("~");
             t--;
         }
     }
@@ -31,50 +33,27 @@ class GFG {
 
 
 // User function Template for Java
-
 class Solution {
-    public static long[] productExceptSelf(int nums[]) {
-        // code here
-        long p=1;
-        int zeroCount = 0;
-        long[] ans = new long[nums.length];
-        
-        //find product of array elements
-        for(int num : nums){
-            //if more than 1 '0' occur, fill array with '0'
-            if(zeroCount > 1){
-                Arrays.fill(ans, 0);
-                return ans;
-            }
-            if(num == 0){
-                zeroCount++;
-            } else {
-                p *= num;
-            }
+    public static int[] productExceptSelf(int arr[]) {
+         int n=arr.length;
+        int [] res=new int[n];
+        int[] arrL=new int[n];
+        int[] arrR=new int[n];
+        int product=1;
+        for(int i=0;i<n;i++){
+            product*=arr[i];
+            arrL[i]=product;
         }
-        
-        //if more than 1 '0' occur, fill array with '0'
-        if(zeroCount > 1){
-            Arrays.fill(ans, 0);
-            return ans;
+        int newproduct=1;
+        for(int i=n-1;i>=0;i--){
+            newproduct*=arr[i];
+            arrR[i]=newproduct;
         }
-        
-        //if only 1 '0' occurs, swap
-        if(zeroCount == 1){
-            Arrays.fill(ans, 0);
-            for (int i = 0; i < nums.length; i++) {
-                if (nums[i] == 0) {
-                    ans[i] = p;
-                }
-            }
-        }    
-        //else, fill array with product p
-        else {
-            for(int i=0; i<nums.length; i++){
-                ans[i] = p/nums[i];
-            }
+        for(int i=1;i<n-1;i++){
+            res[i]=arrL[i-1]*arrR[i+1];
         }
-        
-        return ans;
+        res[0]=arrR[1];
+        res[n-1]=arrL[n-2];
+        return res;
     }
 }
