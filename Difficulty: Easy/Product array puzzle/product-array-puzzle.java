@@ -35,7 +35,7 @@ class GFG {
 // User function Template for Java
 class Solution {
     public static int[] productExceptSelf(int arr[]) {
-         int n=arr.length;
+        int n=arr.length;
         int [] res=new int[n];
         int[] arrL=new int[n];
         int[] arrR=new int[n];
