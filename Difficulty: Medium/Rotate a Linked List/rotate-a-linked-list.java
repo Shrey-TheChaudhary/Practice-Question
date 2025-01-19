@@ -30,39 +30,51 @@ class Node{
 */
 
 class Solution {
-    // Function to rotate a linked list.
     public Node rotate(Node head, int k) {
-        // If head is null or k is 0, no rotation is needed
-        if (head == null || k == 0) return head;
-
-        Node newHead = head, lastNode = head, newHeadPrev = null;
-
-        // Traverse k nodes to find the new head
-        while (k-- > 0) {
-            newHeadPrev = newHead;
-            newHead = newHead.next;
+        // add code here
+        int lSize = size(head);
+        k = k % lSize;
+        Node reverseHead = reverseNode(head);
+        // reverse first lSize-k node 
+        Node nextNode = null;
+        Node curr = reverseHead;
+        for (int i = 0; i < lSize-k-1; i++) {
+            curr = curr.next;
         }
-
-        // If newHead is null, it means k is equal to the length of the list
-        if (newHead == null) return head;
-
-        lastNode = newHead;
-
-        // Find the last node
-        while (lastNode.next != null) {
-            lastNode = lastNode.next;
+        nextNode = curr.next;
+    curr.next = null; // disconnect the first part
+    Node reverseStartingNode = reverseNode(reverseHead);
+    Node reverseNextNode = reverseNode(nextNode);
+    // Find the last node of the first reversed segment
+    Node temp = reverseStartingNode;
+    while (temp.next != null) {
+        temp = temp.next;
+    }
+    temp.next = reverseNextNode; // connect the two parts
+    return reverseStartingNode;
+        
+    }
+    private static Node reverseNode(Node head) {
+        Node curr = head;
+        Node prev = null;
+        while (curr != null) {
+            Node next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
         }
-
-        // Connect last node to the old head to form a circular list
-        lastNode.next = head;
-
-        // Break the link before the new head
-        newHeadPrev.next = null;
-
-        return newHead;
+        return prev;
+    }
+    private static int size(Node node) {
+        int count = 0;
+        Node curr = node;
+        while (curr != null) {
+            count++;
+            curr = curr.next;
+        }
+        return count;
     }
 }
-
 
 //{ Driver Code Starts.
 
@@ -104,6 +116,8 @@ public class GFG {
             Solution ob = new Solution();
             head = ob.rotate(head, k);
             printList(head);
+
+            System.out.println("~");
         }
     }
 }
