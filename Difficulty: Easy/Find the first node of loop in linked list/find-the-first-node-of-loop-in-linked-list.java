@@ -74,7 +74,7 @@ public class LinkedList {
 
 class Solution {
     public static Node findFirstNode(Node head) {
-       HashSet<Node>set = new HashSet<>();
+        HashSet<Node>set = new HashSet<>();
         Node temp = head;
         while(temp!=null){
         if(set.contains(temp)){
