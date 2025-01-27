@@ -38,6 +38,8 @@ public class LRUDesign {
 // } Driver Code Ends
 
 
+// design the class in the most optimal way
+
 class LRUCache {
     private final int capacity;
     private final Map<Integer, Node> cache;
