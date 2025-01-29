@@ -24,7 +24,7 @@ public class Main {
 // User function Template for Java
 class Solution {
     double power(double b, int e) {
-      return (double) Math.pow(b,e);
+       return (double) Math.pow(b,e);
     }
 }
 
