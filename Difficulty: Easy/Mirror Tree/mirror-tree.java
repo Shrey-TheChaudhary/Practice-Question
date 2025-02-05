@@ -137,7 +137,6 @@ class Node
         left = right = null;
     }
 } */
-
 class Solution {
     // Function to convert a binary tree into its mirror tree.
     void mirror(Node node) {
