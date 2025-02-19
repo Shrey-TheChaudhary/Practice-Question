@@ -80,7 +80,7 @@ public class Main {
 class Solution {
     // Function to merge K sorted linked list.
     Node mergeKLists(List<Node> arr) {
-        Node head = new Node(0);
+       Node head = new Node(0);
         Node res = head;
       PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparingInt(n -> n.data));
       for(Node a:arr){pq.add(a);}
