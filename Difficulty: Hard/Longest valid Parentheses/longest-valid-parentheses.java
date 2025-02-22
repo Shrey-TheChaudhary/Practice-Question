@@ -1,65 +1,51 @@
 //{ Driver Code Starts
-//Initial Template for Java
+// Initial Template for Java
 
 import java.io.*;
 import java.util.*;
 
-class GFG{
-    public static void main(String args[])throws IOException
-    {
+class GFG {
+    public static void main(String args[]) throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         int t = Integer.parseInt(in.readLine());
-        while(t-- > 0){
+        while (t-- > 0) {
             String S = in.readLine();
-            
+
             Solution ob = new Solution();
             System.out.println(ob.maxLength(S));
+
+            System.out.println("~");
         }
     }
 }
 // } Driver Code Ends
 
 
-//User function Template for Java
 
-class Solution{
-     int maxLength(String S){    
-        int open = 0 , close = 0;
-        int max = 0;
-        // traverse from first 
-        for(char c : S.toCharArray()){
-            if( c == '('){
-                open++;
-            }
-            else{
-                close++;
-            }
-            if( open == close){
-                max = Math.max(open+close,max);
-            }
-            // close is greater than open means , reset
-            else if( close > open){
-                open = 0;
-                close = 0;
-            }
+class Solution {
+    static int maxLength(String s) {
+         Stack<Integer>st=new Stack<>();
+        for(int i=0;i<s.length();i++)
+        {
+            char ch=s.charAt(i);
+            if(ch==')' && st.isEmpty())
+            st.push(i);
+            else if(ch=='(')
+            st.push(i);
+            else if(ch==')' && s.charAt(st.peek())=='(')
+            st.pop();
+            else
+            st.push(i);
         }
-        // traverse from last , if open is greater than means , reset
-        open = 0; close = 0;
-        for(int i = S.length()-1 ;i>=0;i--){
-            if( S.charAt(i) == ')'){
-                close++;
-            }
-            else{
-                open++;
-            }
-            if(open == close){
-                max = Math.max(open+close,max);
-            }
-            if(open > close){
-                open = 0;
-                close = 0;
-            }
+        if(st.isEmpty())
+        return s.length();
+         int res = 0;
+        int lastIndex = s.length(); 
+        while (!st.isEmpty()) {
+            int unmatchedIndex = st.pop();
+            res = Math.max(res, lastIndex - unmatchedIndex - 1);
+            lastIndex = unmatchedIndex; 
         }
-        return max;
+        return Math.max(res, lastIndex);
     }
 }
