@@ -24,7 +24,7 @@ class GFG {
 
 class Solution {
     static int maxLength(String s) {
-         Stack<Integer>st=new Stack<>();
+        Stack<Integer>st=new Stack<>();
         for(int i=0;i<s.length();i++)
         {
             char ch=s.charAt(i);
