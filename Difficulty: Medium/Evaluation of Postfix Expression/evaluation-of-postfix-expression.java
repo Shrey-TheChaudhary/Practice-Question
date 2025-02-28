@@ -9,7 +9,7 @@ import java.util.*;
 
 class Solution {
     public int evaluate(String[] arr) {
-       Stack<Integer>st=new Stack<>();
+        Stack<Integer>st=new Stack<>();
         for(int i=0;i<arr.length;i++)
         {
             String ch=arr[i];
