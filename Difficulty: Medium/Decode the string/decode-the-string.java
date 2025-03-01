@@ -24,7 +24,7 @@ class GFG {
 
 class Solution {
     static String decodeString(String s) {
-        Stack<Integer> nums = new Stack<>();
+       Stack<Integer> nums = new Stack<>();
         Stack<StringBuilder> st = new Stack<>();
         StringBuilder current = new StringBuilder();
         
