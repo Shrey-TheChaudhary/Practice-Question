@@ -42,7 +42,7 @@ public class Main {
 
 class Solution {
     public ArrayList<Integer> maxOfSubarrays(int arr[], int k) {
-        ArrayList<Integer> result = new ArrayList<>();
+         ArrayList<Integer> result = new ArrayList<>();
         Deque<Integer> deque = new LinkedList<>();
         for (int i = 0; i < arr.length; i++) {
             // Remove indices of elements outside the current window
