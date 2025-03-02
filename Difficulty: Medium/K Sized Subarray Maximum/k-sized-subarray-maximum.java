@@ -13,7 +13,6 @@ public class Main {
 
         while (t-- > 0) {
             // taking total number of elements
-            int k = Integer.parseInt(br.readLine());
             String line = br.readLine();
             String[] tokens = line.split(" ");
 
@@ -28,59 +27,38 @@ public class Main {
             int[] arr = new int[array.size()];
             int idx = 0;
             for (int i : array) arr[idx++] = i;
-            ArrayList<Integer> res = new Solution().max_of_subarrays(k, arr);
+            int k = Integer.parseInt(br.readLine());
+            ArrayList<Integer> res = new Solution().maxOfSubarrays(arr, k);
 
             // printing the elements of the ArrayList
             for (int i = 0; i < res.size(); i++) System.out.print(res.get(i) + " ");
             System.out.println();
+            System.out.println("~");
         }
     }
 }
 // } Driver Code Ends
 
 
-// User function template for JAVA
-
-class SegmentTree {
-    private int segmentTree[];
-    int size;
-    
-    SegmentTree(int n) {
-        size=4*n;
-        segmentTree=new int[size];
-    }
-    
-    void buildTree(int i, int l, int r, int arr[]) {
-        if(l==r) {
-            segmentTree[i]=arr[l];
-            return;
-        }
-        int mid=l+((r-l)>>1);
-        buildTree(2*i+1,l,mid,arr);
-        buildTree(2*i+2,mid+1,r,arr);
-        segmentTree[i]=Math.max(segmentTree[2*i+1],segmentTree[2*i+2]);
-    }
-    
-    int findMax(int start, int end, int i, int l, int r) {
-        if(r<start || l>end) return Integer.MIN_VALUE;
-        if(l>=start && r<=end) return segmentTree[i];
-        int mid=l+((r-l)>>1);
-        return Math.max(findMax(start,end,2*i+1,l,mid),findMax(start,end,2*i+2,mid+1,r));
-    }
-}
 class Solution {
-    // Function to find maximum of each subarray of size k.
-    public ArrayList<Integer> max_of_subarrays(int k, int arr[]) {
-        // Your code here
-        int n=arr.length;
-        SegmentTree st=new SegmentTree(n);
-        st.buildTree(0,0,n-1,arr);
-        
-        ArrayList<Integer> ans=new ArrayList<>();
-        for(int i=0;i<=n-k;i++) {
-            ans.add(st.findMax(i,i+k-1,0,0,n-1));
+    public ArrayList<Integer> maxOfSubarrays(int arr[], int k) {
+         ArrayList<Integer> result = new ArrayList<>();
+        Deque<Integer> deque = new LinkedList<>();
+        for (int i = 0; i < arr.length; i++) {
+            // Remove indices of elements outside the current window
+            while (!deque.isEmpty() && deque.peekFirst() < i - k + 1) {
+                deque.pollFirst();
+            }
+            // Remove indices of elements that are smaller than the current element
+            while (!deque.isEmpty() && arr[deque.peekLast()] <= arr[i]) {
+                deque.pollLast();
+            }
+            deque.offerLast(i);
+            if (i >= k - 1) {
+                result.add(arr[deque.peekFirst()]);
+            }
         }
+        return result;
         
-        return ans;
     }
 }
