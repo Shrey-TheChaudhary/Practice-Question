@@ -26,7 +26,7 @@ class Geeks {
 
 class Solution {
     static int lis(int arr[]) {
-        int n = arr.length;
+      int n = arr.length;
         if (n == 0) {
             return 0; // Although constraint says size >= 1, good to handle empty case.
         }
