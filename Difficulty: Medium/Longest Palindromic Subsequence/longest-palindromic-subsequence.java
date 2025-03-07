@@ -24,7 +24,7 @@ class GfG {
 
 class Solution {
     public int longestPalinSubseq(String s) {
-        int n = s.length();
+       int n = s.length();
         int[][] dp = new int[n][n];
 
         // Initialize diagonal elements (single characters)
