@@ -27,7 +27,6 @@ class GfG {
 
 // } Driver Code Ends
 
-
 class Solution {
     public int count(int coins[], int sum) {
         // code here.
