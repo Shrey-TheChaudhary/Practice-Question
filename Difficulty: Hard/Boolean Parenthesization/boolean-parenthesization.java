@@ -20,7 +20,6 @@ class GFG {
 }
 // } Driver Code Ends
 
-
 // User function Template for Java
 class Solution {
     static int countWays(String s) {
