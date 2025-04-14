@@ -1,131 +1,141 @@
 //{ Driver Code Starts
-/*package whatever //do not write package name here */
-
-import java.io.*;
+// Initial Template for Java
 import java.util.*;
-import java.math.*;
 
-class GFG {
-	public static void main (String[] args) {
-		Scanner sc = new Scanner(System.in);
-		
-		int t = Integer.parseInt(sc.next());
-		while(t-- > 0)
-		{
-		    int n = Integer.parseInt(sc.next());
-		    int k = Integer.parseInt(sc.next());
-		    
-		    String[] words = new String[n];
-		    
-		    for(int i=0;i<n;i++)
-		    {
-		        words[i] = sc.next();
-		    }
-		    
-		    Solution ob = new Solution();
-		  //  System.out.println(T.findOrder(words,k));
-		    String order = ob.findOrder(words,n,k);
-		    if(order.length() == 0){
-		        System.out.println(0);
-		        continue;
-		    }
-		    if(order.length() != k){
-		        System.out.println("INCOMPLETE");
-		        return;
-		    }
-		    String temp[] = new String[n];
-		    for(int i=0;i<n;i++)
-		        temp[i] = words[i];
-		    
-		    Arrays.sort(temp, new Comparator<String>(){
-		    
-		      @Override
-                public int compare(String a, String b) {
-                    int index1 = 0;
-                    int index2 = 0;
-                    for(int i = 0; i < Math.min(a.length(), b.length()) 
-                                        && index1 == index2; i++) {
-                        index1 = order.indexOf(a.charAt(i));
-                        index2 = order.indexOf(b.charAt(i));
-                    }
-                
-                    if(index1 == index2 && a.length() != b.length()) 
-                    {
-                        if(a.length() < b.length())
-                            return -1;
-                        else
-                            return 1;
-                    }
-                
-                    if(index1 < index2)
-                        return -1;
-                    else
-                        return 1;
-                        
-                }
-		    });
-		    
-		    int flag = 1;
-		    for(int i=0;i<n;i++)
-		    {
-		        if(!words[i].equals(temp[i]))
-	            {
-	                flag = 0;
-	                break;
-	            }
-		    }
-		    
-		    System.out.println(flag);
-		}
-	}
-	
-}
 
 // } Driver Code Ends
 
-
-//User function Template for Java
-
+// User function Template for Java
 class Solution {
-    StringBuilder ans = new StringBuilder();
-    List<List<Character>> arr;
-    boolean[] vis;
+    public String findOrder(String[] words) {
+         Map<Character, Set<Character>> graph = new HashMap<>();
+        Map<Character, Integer> inDegree = new HashMap<>();
 
-    public void dfs(int s) {
-        vis[s] = true;
-        for (char u: arr.get(s)) {
-            if (!vis[u - 'a']) {
-                dfs(u - 'a');
+        for (String word : words) {
+            for (char c : word.toCharArray()) {
+                graph.putIfAbsent(c, new HashSet<>());
+                inDegree.putIfAbsent(c, 0);
             }
         }
-        ans.insert(0, (char)(s + 'a'));
-    }
 
-    public String findOrder(String [] dict, int n, int k) {
+        
+        for (int i = 0; i < words.length - 1; i++) {
+            String word1 = words[i];
+            String word2 = words[i + 1];
 
-        arr = new ArrayList<>();
-        vis = new boolean[k];
+            if (word1.length() > word2.length() && word1.startsWith(word2)) {
+                return "";
+            }
 
-        for (int i = 0; i < k; i++) {
-            arr.add(new ArrayList<Character>());
-        }
-
-        for (int i = 0; i < n - 1; i++) {
-            String a = dict[i];
-            String b = dict[i + 1];
-            for (int j = 0; j < Math.min(a.length(), b.length()); j++) {
-                if (a.charAt(j) != b.charAt(j)) {
-                    arr.get(a.charAt(j) - 'a').add(b.charAt(j));
+            for (int j = 0; j < Math.min(word1.length(), word2.length()); j++) {
+                char c1 = word1.charAt(j);
+                char c2 = word2.charAt(j);
+                if (c1 != c2) {
+                    if (!graph.get(c1).contains(c2)) {
+                        graph.get(c1).add(c2);
+                        inDegree.put(c2, inDegree.get(c2) + 1);
+                    }
                     break;
                 }
             }
         }
 
-        for (int i = 0; i < k; i++) {
-            if (!vis[i]) {
-                dfs(i);
+        Queue<Character> queue = new LinkedList<>();
+        for (char c : inDegree.keySet()) {
+            if (inDegree.get(c) == 0) {
+                queue.offer(c);
             }
         }
-        return ans.toString();
+
+        StringBuilder result = new StringBuilder();
+        while (!queue.isEmpty()) {
+            char c = queue.poll();
+            result.append(c);
+            for (char neighbor : graph.get(c)) {
+                inDegree.put(neighbor, inDegree.get(neighbor) - 1);
+                if (inDegree.get(neighbor) == 0) {
+                    queue.offer(neighbor);
+                }
+            }
+        }
+
+     
+        if (result.length() < inDegree.size()) {
+            return "";
+        }
+
+        return result.toString();
     }
 }
+
+
+//{ Driver Code Starts.
+
+public class GFG {
+    private static boolean validate(String[] original, String order) {
+        Map<Character, Integer> mp = new HashMap<>();
+        for (String word : original) {
+            for (char ch : word.toCharArray()) {
+                mp.put(ch, 1);
+            }
+        }
+        for (char ch : order.toCharArray()) {
+            if (!mp.containsKey(ch)) {
+                return false;
+            }
+            mp.remove(ch);
+        }
+        if (!mp.isEmpty()) {
+            return false;
+        }
+
+        Map<Character, Integer> indexMap = new HashMap<>();
+        for (int i = 0; i < order.length(); i++) {
+            indexMap.put(order.charAt(i), i);
+        }
+
+        for (int i = 0; i < original.length - 1; i++) {
+            String a = original[i];
+            String b = original[i + 1];
+            int k = 0, n = a.length(), m = b.length();
+
+            while (k < n && k < m && a.charAt(k) == b.charAt(k)) {
+                k++;
+            }
+
+            if (k < n && k < m &&
+                indexMap.get(a.charAt(k)) > indexMap.get(b.charAt(k))) {
+                return false;
+            }
+            if (k != n && k == m) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = Integer.parseInt(sc.nextLine()); // Number of test cases
+
+        while (t-- > 0) {
+            String[] words = sc.nextLine().split(" ");
+            String[] original = Arrays.copyOf(words, words.length);
+
+            Solution ob = new Solution();
+            String order = ob.findOrder(words);
+
+            if (order.isEmpty()) {
+                System.out.println("\"\"");
+            } else {
+                System.out.println(validate(original, order) ? "true" : "false");
+            }
+            System.out.println("~");
+        }
+
+        sc.close();
+    }
+}
+
+// } Driver Code Ends
