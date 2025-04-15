@@ -46,7 +46,6 @@ class DriverClass {
 
 
 // User function Template for Java
-
 class Solution {
     static int[] bellmanFord(int V, int[][] edges, int src) {
         // Write your code here
