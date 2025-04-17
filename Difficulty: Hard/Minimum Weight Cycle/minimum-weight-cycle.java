@@ -39,7 +39,6 @@ public class Main {
 
 // } Driver Code Ends
 
-
 class Pair implements Comparable<Pair> {
     int node, weight;
     Pair(int node, int weight) {
