@@ -117,7 +117,6 @@ class Node{
     }
 }
 */
-
 class Solution {
     boolean isHeap(Node tree) {
         Queue<Node> queue=new LinkedList<>();
