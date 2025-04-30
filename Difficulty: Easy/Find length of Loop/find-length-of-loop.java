@@ -51,6 +51,8 @@ public class LinkedList {
 
             Solution ob = new Solution();
             System.out.println(ob.countNodesinLoop(head));
+
+            System.out.println("~");
         }
     }
 }
@@ -59,31 +61,37 @@ public class LinkedList {
 
 
 /*
-
 class Node
 {
     int data;
     Node next;
     Node(int d) {data = d; next = null; }
 }
-
 */
-
-// Function should return the length of the loop in LL.
 
 class Solution {
     // Function to find the length of a loop in the linked list.
-    public int countNodesinLoop(Node head) {
-        int ptr = 0;
-        HashMap<Node,Integer> map = new HashMap<>();
-        while(head != null){
-            if(map.containsKey(head)){
-                return ptr - map.get(head);
-            }else{
-                map.put(head,ptr++);
-                head = head.next;
-            }
+    private int lengthList(Node head){
+        int count=1;
+        Node curr=head;
+        while(head!=null){
+            if(curr.next==head) return count;
+            count++;
+            curr=curr.next;
         }
+        return -1;
+    }
+    // Function to find the length of a loop in the linked list.
+    public int countNodesinLoop(Node head) {
+        // code here.
+        Node slow=head;
+        Node fast=head;
+        while(fast!=null&&fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast) return lengthList(slow);
+        }
+        
         return 0;
     }
 }
