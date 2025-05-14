@@ -21,7 +21,6 @@ class GFG {
 }
 // } Driver Code Ends
 
-
 class Solution {
     public String countAndSay(int n) {
         // code here
