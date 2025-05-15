@@ -21,7 +21,6 @@ class GFG {
 }
 // } Driver Code Ends
 
-
 class Solution {
     public int countSubstring(String s) {
        int n=s.length();
