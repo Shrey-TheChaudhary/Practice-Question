@@ -40,7 +40,6 @@ public class GFG {
 
 // } Driver Code Ends
 
-
 class Solution {
     public ArrayList<Integer> sortArray(int[] arr, int A, int B, int C) {
         int n = arr.length;
