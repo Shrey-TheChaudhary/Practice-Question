@@ -1,3 +1,5 @@
+// User function Template for Java
+
 class Solution {
     int countSubstr(String s, int k) {
         return countAtMost(s,k) - countAtMost(s,k-1);
