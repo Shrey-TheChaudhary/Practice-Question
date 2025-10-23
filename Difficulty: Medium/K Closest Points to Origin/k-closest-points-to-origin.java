@@ -1,60 +1,25 @@
-//{ Driver Code Starts
-import java.util.*;
-
-
-// } Driver Code Ends
 class Solution {
-    public int[][] kClosest(int[][] points, int k) {
-       PriorityQueue<int[]> pq = new PriorityQueue<>((a,b) -> (
-           (a[0] * a[0] + a[1] * a[1]) -  (b[0] * b[0] + b[1] * b[1]) 
-                                                                )
-                                                        );
-        int [][] ans = new int[k][2]; 
+    public ArrayList<ArrayList<Integer>> kClosest(int[][] points, int k) {
+        // code here
+        Arrays.sort(points,(p1,p2) -> {
+            int dist1 = p1[0]*p1[0]+p1[1]*p1[1];
+            int dist2 = p2[0]*p2[0] + p2[1]*p2[1];
+            
+            return Integer.compare(dist1,dist2);
+        });
         
-        for(int [] arr : points) pq.offer(arr);
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
         
-        for(int i = 0 ; i < k ; i++){
-            int [] now = pq.poll();
-            ans[i][0] = now[0];
-            ans[i][1] = now[1];
+        for(int i=0;i<k;i++){
+            int[] point = points[i];
+            
+            ArrayList<Integer> pointList = new ArrayList<>();
+            pointList.add(point[0]);
+            pointList.add(point[1]);
+            
+            res.add(pointList);
         }
         
-        return ans;
+        return res;
     }
 }
-
-//{ Driver Code Starts.
-
-public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        int t = scanner.nextInt();
-
-        while (t-- > 0) {
-            int k = scanner.nextInt();
-            int n = scanner.nextInt();
-            int[][] points = new int[n][2];
-            for (int i = 0; i < n; i++) {
-                points[i][0] = scanner.nextInt();
-                points[i][1] = scanner.nextInt();
-            }
-            Solution solution = new Solution();
-            int[][] ans = solution.kClosest(points, k);
-
-            Arrays.sort(ans, (a, b) -> {
-                if (a[0] != b[0]) {
-                    return Integer.compare(a[0], b[0]);
-                }
-                return Integer.compare(a[1], b[1]);
-            });
-            for (int[] point : ans) {
-                System.out.println(point[0] + " " + point[1]);
-            }
-            System.out.println("~");
-        }
-
-        scanner.close();
-    }
-}
-// } Driver Code Ends
