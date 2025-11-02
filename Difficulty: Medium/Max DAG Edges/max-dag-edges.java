@@ -3,5 +3,6 @@ class Solution {
         // Code here
         int totalPossibleEdges = (V * (V - 1)) / 2;
         return totalPossibleEdges - edges.length;  
+        
     }
 }
