@@ -1,36 +1,31 @@
-import java.util.HashMap;
-
 class Solution {
     public int countAtMostK(int arr[], int k) {
-        int n = arr.length;
-        int left = 0, right = 0;
-        int count = 0;
-        HashMap<Integer, Integer> freq = new HashMap<>();
-
-        for (right = 0; right < n; right++) {
-            // Add current element to frequency map
-            freq.put(arr[right], freq.getOrDefault(arr[right], 0) + 1);
-
-            // Shrink the window if more than k distinct elements
-            while (freq.size() > k) {
-                freq.put(arr[left], freq.get(arr[left]) - 1);
-                if (freq.get(arr[left]) == 0) {
-                    freq.remove(arr[left]);
-                }
-                left++;
+        // code here
+         int n=arr.length;
+        long total=n*(n+1)/2;
+        
+        int i=0;
+        int j=0;
+        int ans=0;
+        HashMap<Integer,Integer> map=new HashMap<>();
+        while(j<n)
+        {
+            map.put(arr[j],map.getOrDefault(arr[j],0)+1);
+           // System.out.println(map);
+            while(map.size()>k)
+            {
+                ans+=n-j;
+                
+                  map.put(arr[i],map.get(arr[i])-1);
+                  
+                  if(map.get(arr[i])==0) 
+                  map.remove(arr[i]);
+                
+                i++;
             }
-
-            // Add number of subarrays ending at right with at most k distinct
-            count += (right - left + 1);
+            j++;
         }
-
-        return count;
-    }
-
-    // To find exact k distinct, use this:
-    public int countExactlyK(int arr[], int k) {
-        return countAtMostK(arr, k) - countAtMostK(arr, k - 1);
+        
+        return (int)total-ans;
     }
 }
-
-b
