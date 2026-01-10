@@ -1,21 +1,24 @@
-// User function Template for Java
-
 class Solution {
-    int countSubstr(String s, int k) {
-        return countAtMost(s,k) - countAtMost(s,k-1);
+    public int countSubstr(String s, int k) {
+        return solve(s,k) - solve(s,k-1);
+        
     }
-    int countAtMost(String s, int k){
-        int l=0,count=0;
-        HashMap<Character,Integer>map = new HashMap<>();
-        for(int r=0; r<s.length(); r++){
-            char ch = s.charAt(r);
-            map.put(ch,map.getOrDefault(ch,0)+1);
-            while(map.size() > k){
-                map.put(s.charAt(l),map.get(s.charAt(l))-1);
-                map.remove(s.charAt(l),0);
-                l++;
+    private int solve(String s, int k){
+        int i=0,j=0;
+        int n=s.length();
+        int count=0;
+        HashMap<Character, Integer> hm= new HashMap<>();
+        while(i<n){
+            char ch=s.charAt(i);
+            hm.put(ch,hm.getOrDefault(ch,0)+1);
+            while(hm.size()>k){
+                char ch2=s.charAt(j);
+                hm.put(ch2,hm.get(ch2)-1);
+                if(hm.get(ch2)==0) hm.remove(ch2);
+                j++;
             }
-            count += (r-l+1);
+            count=count+(i-j+1);
+            i++;
         }
         return count;
     }
