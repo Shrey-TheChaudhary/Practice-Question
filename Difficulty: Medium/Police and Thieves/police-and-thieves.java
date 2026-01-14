@@ -1,23 +1,20 @@
 class Solution {
     public int catchThieves(char[] arr, int k) {
         // code here
-        Queue<Integer> police = new LinkedList<>();
-        Queue<Integer> theif = new LinkedList<>();
-        for(int i=0 ; i<arr.length; i++){
-            if(arr[i] == 'T') theif.add(i);
-            else police.add(i);
-            
-        }
-        int count=0;
-        while(!police.isEmpty() && !theif.isEmpty()){
-            if(Math.abs(police.peek()-theif.peek())<=k){
-                police.remove();
-                theif.remove();
-                count++;
-            }else if(police.peek()>theif.peek()){
-                theif.remove();
-            }else{
-                police.remove();
+        int n =arr.length;
+        int i=0,j=0,count =0;
+        
+        while(i<n && j<n){
+            while(i<n && arr[i]!='P')i++;
+              while(j<n && arr[j]!='T')j++;
+            if(i<n && j<n && Math.abs(i-j)<=k){
+               count++;
+                i++;
+                j++;
+            }else if(j<n && j<i){
+                j++;
+            }else if(i<n && i<j){
+                i++;
             }
         }
         return count;
