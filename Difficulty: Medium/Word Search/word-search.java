@@ -1,71 +1,65 @@
-//{ Driver Code Starts
-import java.io.*;
-import java.util.*;
-
-class GFG {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int tc = sc.nextInt(); // Number of test cases
-        while (tc-- > 0) {
-            int n = sc.nextInt();
-            int m = sc.nextInt();
-            char[][] mat = new char[n][m];
-
-            // Reading the matrix
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < m; j++) {
-                    mat[i][j] = sc.next().charAt(0);
-                }
-            }
-
-            String word = sc.next();
-            Solution obj = new Solution();
-            boolean ans = obj.isWordExist(mat, word);
-            if (ans)
-                System.out.println("true");
-            else
-                System.out.println("false");
-
-            System.out.println("~");
-        }
-        sc.close();
-    }
-}
-// } Driver Code Ends
-
-
 class Solution {
     static public boolean isWordExist(char[][] mat, String word) {
-        int n=mat.length;
-        int m=mat[0].length;
-        boolean[][] vis=new boolean[n][m];
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                if(dfs(i,j,0,word,mat,vis)) return true;
+        char first = word.charAt(0);
+        int n = mat.length;
+        int m = mat[0].length;
+        boolean[][] visited = new boolean[n][m];
+        int row = 0;
+        int col = 0;
+        boolean found = false;
+        for(int i = 0;i< mat.length;i++){
+            for (int j = 0;j<mat[i].length;j++){
+                if(mat[i][j] == first){
+                    row = i;
+                    col = j;
+                    visited[i][j] = true;
+                    found= checkNearby(mat,row,col,word,1,"huu",visited);
+                    if(found){
+                        return found;
+                    }
+                }
+                visited[i][j] = false;
             }
         }
-        return false;
+
+        return found;
+        
     }
     
-    static boolean dfs(int i,int j,int s,String word,char[][] mat,boolean[][] vis){
-        if(s==word.length()) return true;
-        if(word.charAt(s)!=mat[i][j]) return false;
-        vis[i][j]=true;
-        int[] dir={0,1,0,-1,0};
-        int n=mat.length;
-        int m=mat[0].length;
-        for(int d=0;d<4;d++){
-            int nI=dir[d]+i;
-            int nJ=dir[d+1]+j;
-            if(isValid(nI,nJ,n,m) && !vis[nI][nJ]){
-                if(dfs(nI,nJ,s+1,word,mat,vis)) return true;
-            }
+      public static boolean checkNearby(char[][] mat, int i,int j, String word, int wordIndex, String notCheck, boolean[][] visited) {
+        if(wordIndex>=word.length()){
+            return true;
         }
-        vis[i][j]=false;
-        return false;
-    }
-    
-    static boolean isValid(int i,int j,int n,int m){
-        return i>=0 && j>=0 && i<n && j<m;
+
+        boolean right = false;
+        boolean left = false;
+        boolean up = false;
+        boolean down = false;
+
+
+        if(!Objects.equals(notCheck,"right") && j+1<mat[i].length && mat[i][j+1]==word.charAt(wordIndex) && !visited[i][j+1]) {
+            visited[i][j+1] = true;
+            right =  checkNearby(mat,i,j+1,word,wordIndex+1,"left",visited);
+            if(!right)
+                visited[i][j+1] = false;
+        } if(!Objects.equals(notCheck,"left") && j-1>=0 &&  mat[i][j-1]== word.charAt(wordIndex) && !visited[i][j-1]) {
+            visited[i][j-1] = true;
+            left =  checkNearby(mat,i,j-1,word,wordIndex+1,"right",visited);
+            if(!left)
+                visited[i][j-1] = false;
+        } if(!Objects.equals(notCheck,"down") && i+1<mat.length &&  mat[i+1][j] ==  word.charAt(wordIndex) && !visited[i+1][j]) {
+            visited[i+1][j] = true;
+            up =  checkNearby(mat,i+1,j,word,wordIndex+1,"up",visited);
+            if(!up)
+                visited[i+1][j] = false;
+        }
+        if(!Objects.equals(notCheck,"up") && i-1>=0 && mat[i-1][j] == word.charAt(wordIndex) && !visited[i-1][j]) {
+            visited[i-1][j] = true;
+            down =  checkNearby(mat,i-1,j,word,wordIndex+1,"down",visited);
+            if(!down)
+                visited[i-1][j] = false;
+        }
+        return right || left || up || down;
     }
 }
+
