@@ -1,43 +1,41 @@
 class Solution {
     public int minCost(int[] heights, int[] cost) {
-        int low = Integer.MAX_VALUE;
-        int high = Integer.MIN_VALUE;
-
-
-        for (int h : heights) {
-            low = Math.min(low, h);
-            high = Math.max(high, h);
-        }
-
+        // code here
+        int l = heights[0], r = heights[0];
+        int n = cost.length;
         
-        while (high - low > 2) {
-            int mid1 = low + (high - low) / 3;
-            int mid2 = high - (high - low) / 3;
-
-            long cost1 = getTotalCost(heights, cost, mid1);
-            long cost2 = getTotalCost(heights, cost, mid2);
-
-            if (cost1 < cost2) {
-                high = mid2;
-            } else {
-                low = mid1;
-            }
+        for(int h:heights) {
+            l = Math.min(l, h);
+            r = Math.max(r, h);
         }
-
-
-        long result = Long.MAX_VALUE;
-        for (int h = low; h <= high; h++) {
-            result = Math.min(result, getTotalCost(heights, cost, h));
+        
+        while (l <= r) {
+            int midH = l + (r - l) / 2;
+            
+            int costMidMinus1 = findCost(midH-1, heights, cost, n);
+            int costMidPlus1  = findCost(midH+1, heights, cost, n);
+            int costMid       = findCost(midH,   heights, cost, n);
+            
+            if (costMidMinus1 >= costMid && costMid <= costMidPlus1) return costMid;
+            
+            else if (costMidMinus1 >= costMid && costMid > costMidPlus1) l = midH+1;
+            
+            else r = midH-1;
         }
-
-        return (int) result;
+        
+        return -1;
     }
+    
+    public int findCost(int h, int[] heights, int[] cost, int n) {
 
-    private long getTotalCost(int[] heights, int[] cost, int targetHeight) {
-        long total = 0;
-        for (int i = 0; i < heights.length; i++) {
-            total += 1L * Math.abs(heights[i] - targetHeight) * cost[i];
+        int totCost = 0;
+        
+        for(int i=0; i<n; i++) {
+            int curr = heights[i];
+            int diff = Math.abs(curr - h);
+            totCost += (diff * cost[i]);
         }
-        return total;
+        
+        return totCost;
     }
 }
