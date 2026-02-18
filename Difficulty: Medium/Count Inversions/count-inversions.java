@@ -1,86 +1,50 @@
-//{ Driver Code Starts
-import java.io.*;
-import java.util.*;
-
-class Sorting {
-    public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int t = Integer.parseInt(br.readLine());
-        for (int g = 0; g < t; g++) {
-            String[] str = (br.readLine()).trim().split(" ");
-            int arr[] = new int[str.length];
-            for (int i = 0; i < str.length; i++) arr[i] = Integer.parseInt(str[i]);
-            System.out.println(new Solution().inversionCount(arr));
-            System.out.println("~");
-        }
-    }
-}
-// } Driver Code Ends
-
-
-// User function Template for Java
-
 class Solution {
-    // Function to count inversions in the array
     static int inversionCount(int arr[]) {
-        int n = arr.length;
-        // Temporary array for merge sort
-        int[] temp = new int[n];
-        return mergeSortAndCount(arr, temp, 0, n - 1);
+        // Code Here
+       
+        return mergesort(arr,0,arr.length-1);
     }
-
-    // Function to perform merge sort and count inversions
-    private static int mergeSortAndCount(int[] arr, int[] temp, int left, int right) {
-        int invCount = 0; // Initialize the inversion count
+     public static int mergesort(int arr[],int si,int ei){
+       if(si>=ei){
+           return 0;
+       }
+        int count=0;
+        int mid=si+(ei-si)/2;
+        count +=mergesort(arr,si,mid);
+        count +=mergesort(arr,mid+1,ei);
+        count +=merge(arr,si,mid,ei);
+        return count;
         
-        if (left < right) {
-            // Find the midpoint of the array
-            int mid = left + (right - left) / 2;
-
-            // Recursively count inversions in the left and right halves
-            invCount += mergeSortAndCount(arr, temp, left, mid);
-            invCount += mergeSortAndCount(arr, temp, mid + 1, right);
-
-            // Count inversions during the merge step
-            invCount += mergeAndCount(arr, temp, left, mid, right);
-        }
-        return invCount;
     }
-
-    // Function to merge two halves and count inversions
-    private static int mergeAndCount(int[] arr, int[] temp, int left, int mid, int right) {
-        int i = left;     // Starting index for the left subarray
-        int j = mid + 1;  // Starting index for the right subarray
-        int k = left;     // Starting index for the merged array
-        int invCount = 0; // Count of inversions
-
-        // Merge the two halves
-        while (i <= mid && j <= right) {
-            if (arr[i] <= arr[j]) {
-                // No inversion, copy the smaller element
-                temp[k++] = arr[i++];
-            } else {
-                // Inversion found
-                temp[k++] = arr[j++];
-                invCount += (mid - i + 1); // Count inversions
+    public static int merge(int arr[],int si,int mid,int ei){
+        int temp[]=new int[ei-si+1];
+        int i=si;
+        int j=mid+1;
+        int k=0;
+        int count1=0;
+        while(i<=mid && j<=ei){
+            if(arr[i]<=arr[j]){
+                temp[k]=arr[i];
+                k++;
+                i++;
+            }
+            else{
+                temp[k]=arr[j];
+                count1+=mid-i+1;
+                k++;
+                j++;
             }
         }
-
-        // Copy remaining elements of the left subarray, if any
-        while (i <= mid) {
-            temp[k++] = arr[i++];
+        while(i<=mid){
+            temp[k++]=arr[i++];
         }
-
-        // Copy remaining elements of the right subarray, if any
-        while (j <= right) {
-            temp[k++] = arr[j++];
+        while(j<=ei){
+            temp[k++]=arr[j++];
         }
-
-        // Copy the sorted elements back to the original array
-        for (i = left; i <= right; i++) {
-            arr[i] = temp[i];
+        
+        for( k=0,i=si;k<temp.length;k++,i++){
+            arr[i]=temp[k];
         }
-
-        return invCount;
+        return count1;
     }
 }
